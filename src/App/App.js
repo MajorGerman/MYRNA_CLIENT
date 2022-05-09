@@ -2,10 +2,12 @@ import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from '../navbar/Navbar';
-import AllPosts from '../AllPosts/AllPosts'
+import AllPosts from '../AllPosts/AllPosts';
+import Registration from '../Registration/Registration';
 
 function App() {
   const [userRoles, ] = useState(null)
+  const [userToken, setUserToken] = useState()
 
   return (
     <div>
@@ -20,7 +22,7 @@ function App() {
           <Route path='/subscriptions' component={AllPosts} />
           <Route path='/addPost' component={AllPosts} />
           <Route path='/login' component={AllPosts} />
-          <Route path='/registration' component={AllPosts} />
+          <Route path='/registration'  element={<Registration setUserToken={setUserToken}/>} />
       </Routes>
       </Router>
       

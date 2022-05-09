@@ -1,0 +1,21 @@
+
+.regForm {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+input {
+    margin: 5px;
+    padding: 6px;
+}
+
+input[type="submit"] {
+    padding: 4px;
+    transition: 0.4s;
+}
+
+input[type="submit"]:hover {
+    opacity: 80%;
+}

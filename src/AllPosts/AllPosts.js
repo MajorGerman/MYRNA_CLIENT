@@ -1,31 +1,33 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Post from '../Post/Post';
 import "./AllPosts.css"
 
-
 function AllPosts (props) {
 
-    const [posts, ] = useState()
-    
-    async function loadPosts(offset, take){
-        try{
-        const res = await fetch("https://myrna-server.herokuapp.com/", {
-            header: 'content-type: application/json',
-            method: 'POST',
-            //body: JSON.stringify({query: 'Query {getAllUsers {id roles }}'})
-        })
-        console.log(res)
-        } catch (err){
+    const [posts, setPosts] = useState()
+
+    async function getData() {
+
+        try {
+
+            const res = await fetch("https://myrna-server.herokuapp.com/", {
+                headers: {'Content-Type': 'application/json'},
+                method: 'POST',
+                body: JSON.stringify({"query": "query Query {getAllPosts {id }}"})
+            })
+
+            console.log(await res.json())
+            return await res.json();
+
+        } catch (err) {
+
             console.log(err)
-        }
-        //console.log(res)
-        
+
+        }       
     }
 
-
-    //loadPosts();
+    setPosts(getData())
     
-    loadPosts()
     return(
         <div>
             {posts.map((post) => <Post post={post}/>)}
