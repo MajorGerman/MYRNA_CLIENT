@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {request, gql} from 'graphql-request';
 import "./Registration.css"
 
-function Registration(props) {
+function Registration (props) {
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -65,20 +65,29 @@ function Registration(props) {
     
   return (
 
-    <div className="regForm">
+    <div className="regPage">
 
-      <form method='POST' onSubmit={handleSubmit}>
+      <div className="regForm">
 
-        <input name="email" onChange={handleEmailChange} value={email} placeholder='Email'></input><br></br>
-        <input name="pass" onChange={handlePassChange} value={pass} placeholder='Password'></input><br></br>
-        <input name="firstname" onChange={handleFirstnameChange} value={firstName} placeholder='Firstname'></input><br></br>
-        <input name="lastname" onChange={handleLastnameChange} value={lastName} placeholder='Lastname'></input><br></br>
+        <div className="regFormTitle">
+          <p className="regFormTitleText"> Registration </p>
+        </div>
 
-        <input type="submit"></input>
+        <form method='POST' onSubmit={handleSubmit}>
 
-      </form>
+          <input type="email" name="email" onChange={handleEmailChange} value={email} placeholder='Email' required></input><br></br>
+          <input type="text" minLength={9} name="pass" onChange={handlePassChange} value={pass} placeholder='Password' required></input><br></br>
+          <input type="text" name="firstname" onChange={handleFirstnameChange} value={firstName} placeholder='First Name' required></input><br></br>
+          <input type="text" name="lastname" onChange={handleLastnameChange} value={lastName} placeholder='Last Name' required></input><br></br>
+
+          <input type="submit" value="Sign Up"></input>
+
+        </form>
+
+      </div>
 
     </div>
+
     
   );
 }

@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+html {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+}
+
+body {
+  background-color: #F4F4F4 !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}

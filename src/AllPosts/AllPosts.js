@@ -4,20 +4,21 @@ import "./AllPosts.css"
 
 function AllPosts (props) {
 
-    const [posts, setPosts] = useState()
+    let posts = [];
 
     async function getData() {
 
         try {
 
-            const res = await fetch("https://myrna-server.herokuapp.com/", {
+            return await fetch("https://myrna-server.herokuapp.com/", {
                 headers: {'Content-Type': 'application/json'},
                 method: 'POST',
-                body: JSON.stringify({"query": "query Query {getAllPosts {id }}"})
+                body: JSON.stringify({"query": "query Query {getAllPosts {id, header, content}}"})
+            }).then((a) =>{
+                return a.json()
+            }).then((b) => {
+                return b
             })
-
-            console.log(await res.json())
-            return await res.json();
 
         } catch (err) {
 
@@ -26,11 +27,18 @@ function AllPosts (props) {
         }       
     }
 
-    setPosts(getData())
-    
+    useEffect(() =>{
+        getData()
+        .then((a) =>{
+            posts = a.data.getAllPosts;
+            console.log(posts)
+        })
+        
+    }, [])
+
     return(
         <div>
-            {posts.map((post) => <Post post={post}/>)}
+            {posts.map((post, key) => <Post key={key} post={post}/>)}
         </div>
     )
 }

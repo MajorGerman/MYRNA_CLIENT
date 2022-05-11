@@ -1,4 +1,4 @@
-.regPage {
+.logPage {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,26 +6,30 @@
     margin-top: 16px;
 }
 
-.regForm {
+.logForm {
     width: 320px;
     background-color: white;
     border-radius: 8px;
 }
 
+.modal {
+    width: 100%;
+}
 
-.regFormTitle {
+
+.logFormTitle {
     width: 100%;
     margin: 12px 0px 16px 0px;
     display: flex;
     justify-content: center;
 }
 
-.regFormTitle > .regFormTitleText {
+.logFormTitle > .logFormTitleText {
     font-size: 21px;
 }
 
 
-.regForm > form {
+.logForm > form {
     text-align: center;
 }
 
