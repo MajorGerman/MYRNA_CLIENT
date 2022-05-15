@@ -3,6 +3,9 @@
     background-color: white;
     display: flex; 
     justify-content:space-between;
+    border-color: #E9E9E9;
+    border-width: 0.5px;
+    border-style: solid;
 }
 
 @media only screen and (max-width: 500px) {
@@ -10,32 +13,39 @@
 
 .navbar > div {
     display: flex;
-    margin: 2px;
+    margin: 4px;
 }
 
 .navbar > div > div {
     display: flex;
     text-align: center;
     align-items: center;
-    max-width: 100px;
+    max-width: 200px;
     margin: 6px 8px 6px 8px;
-    padding: 4px 12px 4px 12px;
+    padding: 8px 18px 8px 18px;
     transition: 0.3s;
 }
 
 .navbar > .navbar-left > div {
     border-radius: 6px;
     border-color: #E0E0E0;
-    border-width: 0.75px;
+    border-width: 0.5px;
     border-style: solid;
 }
+
+.navbar > .navbar-right > div > img {
+    width: 42px;
+}
+
 
 .navbar > div > div > .navlink {
     text-decoration: none;
     color: black;
+    font-size: 26px;
 }
 
 
 .navbar > div > div:hover {
     opacity: 60%;
 }
+

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {request, gql} from 'graphql-request';
+import {gql} from 'graphql-request';
 import "./Login.css"
 import Modal from 'react-modal/lib/components/Modal';
 import {Link} from 'react-router-dom';
@@ -25,6 +25,7 @@ function Login(props) {
 
   function closeModal() {
     changeOpen(false);
+    props.setLogin(false);
   }
 
   async function handleSubmit(e) {
@@ -59,28 +60,48 @@ function Login(props) {
     
   return (
 
-    <Modal className="modal"
+      <Modal className="modal"
 
-      isOpen={isOpen}
-     
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description">
+        isOpen={isOpen}
+        ariaHideApp={false}
+        onRequestClose={closeModal}
+
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description">
 
         <div className="logPage">
-          <Link onClick={closeModal} to="/"> X </Link>
-        <div className="logForm">
-          <div className="logFormTitle">
-            <p className="logFormTitleText"> Login </p>
-          </div>
-          <form method='POST' onSubmit={handleSubmit}>
-            <input type="email" name="email" onChange={handleEmailChange} value={email} placeholder='Email' required></input><br></br>
-            <input type="text"  name="pass" onChange={handlePassChange} value={pass} placeholder='Password' required></input><br></br>
-            <input type="submit" value="Log In"></input>
-          </form>
-        </div>
-      </div>
 
-    </Modal>
+            <div className="logXDiv">
+              <Link className="logX" onClick={closeModal} to="/"> X </Link>
+            </div>
+
+            <div className="logFormDiv">
+
+              <div className="logFormTitle">
+                <p className="logFormTitleText"> Sign in </p>
+              </div>
+
+              <form className='logForm' method='POST' onSubmit={handleSubmit}>
+                <input type="email" name="email" onChange={handleEmailChange} value={email} placeholder='Email' required></input><br></br>
+                <input type="text"  name="pass" onChange={handlePassChange} value={pass} placeholder='Password' required></input><br></br>
+                <input type="submit" value="Log In"></input>
+              </form>
+
+            </div>
+
+            <hr></hr>
+
+            <div className="logRegDiv">
+
+              <p> Don't have an account yet? </p>
+
+              <input type="button" value="Register"></input>
+
+            </div>
+
+        </div>
+
+      </Modal>
     
   );
 }

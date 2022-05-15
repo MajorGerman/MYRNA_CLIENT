@@ -1,10 +1,26 @@
 import React, {useState, useEffect} from 'react';
 import Post from '../Post/Post';
 import "./AllPosts.css"
+import { gql } from 'graphql-request';
 
 function AllPosts (props) {
 
     let posts = [];
+    
+    let query = gql`
+        query GetAllPosts {
+            getAllPosts {
+                id
+                header
+                content
+                author {
+                    id
+                    first_name
+                    last_name
+                }
+            }
+        }
+    `;
 
     async function getData() {
 
@@ -13,7 +29,7 @@ function AllPosts (props) {
             return await fetch("https://myrna-server.herokuapp.com/", {
                 headers: {'Content-Type': 'application/json'},
                 method: 'POST',
-                body: JSON.stringify({"query": "query Query {getAllPosts {id, header, content}}"})
+                body: JSON.stringify({"query": query})
             }).then((a) =>{
                 return a.json()
             }).then((b) => {

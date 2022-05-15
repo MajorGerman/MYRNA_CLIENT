@@ -1,13 +1,16 @@
 import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Navbar from '../navbar/Navbar';
 import AllPosts from '../AllPosts/AllPosts';
 import AllUpdates from '../AllUpdates/AllUpdates';
 import Registration from '../Registration/Registration';
 import Login from '../Login/Login';
+import Map from '../Map/Map';
 
 function App() {
+
   const [userRoles, ] = useState(null)
   const [userToken, setUserToken] = useState()
 
@@ -15,18 +18,18 @@ function App() {
   const [reg, setReg] = useState(false);
 
   const returnLogin = (bool) => {
-    return (bool) ? <Login setUserToken={setUserToken}/> : '';
+    return (bool) ? <Login setLogin={setLogin} setUserToken={setUserToken}/> : '';
   }
   const returnRegistration = (bool) => {
-    return (bool) ? <Registration setUserToken={setUserToken}/>: '';
+    return (bool) ? <Registration setReg={setReg} setUserToken={setUserToken}/>: '';
   }
 
   return (
     <div>
       <Router>  
         <Navbar roles={userRoles} setLogin={setLogin} setReg={setReg}/> 
-        {returnLogin()}
-        {returnRegistration()}  
+        {returnLogin(login)}
+        {returnRegistration(reg)}  
         <Routes>
           <Route path='/' exact />
           <Route path='/allPosts' element={<AllPosts/>} />
@@ -35,7 +38,8 @@ function App() {
           <Route path='/subscriptions' component={AllPosts} />
           <Route path='/addPost' component={AllPosts} />
           <Route path='/allUpdates' element={<AllUpdates/>} />
-      </Routes>
+          <Route path='/map' element={<Map/>} />
+        </Routes>
         
       </Router>
       

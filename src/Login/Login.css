@@ -1,19 +1,47 @@
-.logPage {
+.modal {
     display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.logPage {
+    width: 30vw;
+    height: 65vh;
+    background-color: white;
+    border-radius: 6px;
+    border-color: #E9E9E9;
+    border-width: 0.75px;
+    border-style: solid;
+    padding: 4px;
+    text-align: center;
+}
+
+
+.logDiv {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 16px;
+}
+
+.logFormDiv {
+    width: 100%;
+    background-color: white;
 }
 
 .logForm {
-    width: 320px;
-    background-color: white;
-    border-radius: 8px;
+    margin-bottom: 1vw;
 }
 
-.modal {
-    width: 100%;
+.logXDiv {
+    display: flex;
+    justify-content: end;
+}
+
+.logX {
+    text-decoration: none;
+    color: #067BE2;
+    margin: 1vw;
+    font-size: 1.5vw;
 }
 
 
@@ -25,44 +53,79 @@
 }
 
 .logFormTitle > .logFormTitleText {
-    font-size: 21px;
+    font-size: 2vw;
 }
 
 
-.logForm > form {
+.logFormDiv > form {
     text-align: center;
 }
 
+.logRegDiv {
+    text-align: center;
+}
+
+.logRegDiv > p {
+    color: #989898;
+    font-size: 1.25vw;
+    margin-top: 2vw;
+}
+
+hr {
+    height: 1px;
+    border: none;
+    background-color: #ECECEC;
+}
+
 input {
-    padding: 6px;
-    width: 60%;
     border-radius: 8px;
 }
 
 input[type="text"] {
-    margin: 7px;
+    font-size: 1vw;
+    margin: 12px;
     border-style: solid;
-    border-color: #E0E0E0;
+    border-color: #E9E9E9;
     border-width: 0.75px;
+    background-color: #f0f0f0;
 }
 
 input[type="email"] {
-    margin: 7px;
+    font-size: 1vw;
+    margin: 12px;
     border-style: solid;
-    border-color: #E0E0E0;
+    border-color: #E9E9E9;
     border-width: 0.75px;
+    background-color: #f0f0f0;
 }
 
 input[type="submit"] {
     border-width: 0px;
-    padding: 6px;
-    margin: 12px 0px 16px 0px;
-    max-width: 40%;
-    transition: 0.3s;
+    padding: 8px;
+    margin: 24px 2px 24px 4px;
+    max-width: 30%;
+    transition: 0.2s;
     background-color: #067BE2;
     color: white;
+    font-size: 1vw;
+}
+
+input[type="button"] {
+    border-width: 0px;
+    padding: 8px;
+    margin: 24px 2px 16px 4px;
+    max-width: 20%;
+    transition: 0.2s;
+    background-color: #f0f0f0;
+    color: black;
+    font-size: 1vw;
 }
 
 input[type="submit"]:hover {
     opacity: 75%;
 }
+
+input[type="button"]:hover {
+    opacity: 75%;
+}
+
