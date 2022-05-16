@@ -1,15 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import { gql } from 'graphql-request';
-import { GoogleMap, GoogleMapsMarkerClusterer, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import './Map.css';
 
-function Map (props) {
+import env from 'react-dotenv';
 
-      
-      const center = {
+function Map (props) {
+   
+    const center = {
         lat: 59.3577613,
         lng: 27.4199823
-      };
+    };
 
     return(
 
@@ -19,7 +20,7 @@ function Map (props) {
 
             <div className='mapDiv'>
 
-                <LoadScript googleMapsApiKey="AIzaSyAi1OPtj6-obrkvGDLdN8tCWMwAnRTOmQc">
+                <LoadScript googleMapsApiKey={process.env.REACT_APP_APIKEY}>
 
                     <GoogleMap 
                         mapContainerClassName="map"

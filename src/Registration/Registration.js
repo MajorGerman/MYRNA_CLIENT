@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {request, gql} from 'graphql-request';
-import "./Registration.css"
+//import "./Registration.css"
 
 function Registration (props) {
 

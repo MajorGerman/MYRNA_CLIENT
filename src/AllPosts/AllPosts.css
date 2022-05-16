@@ -1,0 +1,9 @@
+.homePage {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.homePage > .homePageText {
+    font-size: 36px;
+}

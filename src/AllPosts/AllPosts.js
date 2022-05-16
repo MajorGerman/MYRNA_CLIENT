@@ -53,9 +53,16 @@ function AllPosts (props) {
     }, [])
 
     return(
-        <div>
-            {posts.map((post, key) => <Post key={key} post={post}/>)}
-        </div>
+            <div className='homePage'>
+
+                <p className='homePageText'>Home</p>
+
+                <div>
+                    {posts.map((post, key) => <Post key={key} post={post}/>)}
+                </div>
+
+            </div>
+
     )
 }
 

@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {gql} from 'graphql-request';
 import "./Login.css"
 import Modal from 'react-modal/lib/components/Modal';
-import {Link} from 'react-router-dom';
+
+import crossImg from '../img/cross.svg'
 
 function Login(props) {
 
@@ -72,7 +73,7 @@ function Login(props) {
         <div className="logPage">
 
             <div className="logXDiv">
-              <Link className="logX" onClick={closeModal} to="/"> X </Link>
+              <div className="logX" onClick={closeModal} to="/"> <img src={crossImg}></img> </div>
             </div>
 
             <div className="logFormDiv">
@@ -84,7 +85,12 @@ function Login(props) {
               <form className='logForm' method='POST' onSubmit={handleSubmit}>
                 <input type="email" name="email" onChange={handleEmailChange} value={email} placeholder='Email' required></input><br></br>
                 <input type="text"  name="pass" onChange={handlePassChange} value={pass} placeholder='Password' required></input><br></br>
-                <input type="submit" value="Log In"></input>
+                <div className="logFormButtonsDiv">
+                  <div className='logFormButtons'>
+                    <input type="submit" value="Log In"></input>
+                    <p>I forgot my password</p>
+                  </div>
+                </div>
               </form>
 
             </div>

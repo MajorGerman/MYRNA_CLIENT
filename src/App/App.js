@@ -8,6 +8,7 @@ import AllUpdates from '../AllUpdates/AllUpdates';
 import Registration from '../Registration/Registration';
 import Login from '../Login/Login';
 import Map from '../Map/Map';
+import Notification from '../Notification/Notification';
 
 function App() {
 
@@ -17,19 +18,30 @@ function App() {
   const [login, setLogin] = useState(false);
   const [reg, setReg] = useState(false);
 
+  const [notify, setNotify] = useState(false);
+  const [notifyText, setNotifyText] = useState("");
+
   const returnLogin = (bool) => {
     return (bool) ? <Login setLogin={setLogin} setUserToken={setUserToken}/> : '';
   }
+
   const returnRegistration = (bool) => {
     return (bool) ? <Registration setReg={setReg} setUserToken={setUserToken}/>: '';
   }
 
+  const returnNotify = (bool) => {
+    return (bool) ? <Notification notifyText={notifyText} setNotify={setNotify}/>: '';
+  }
+
   return (
     <div>
+
       <Router>  
-        <Navbar roles={userRoles} setLogin={setLogin} setReg={setReg}/> 
+
+        <Navbar roles={userRoles} setLogin={setLogin} setReg={setReg} setNotify={setNotify} setNotifyText={setNotifyText}/> 
+        {returnNotify(notify)}  
         {returnLogin(login)}
-        {returnRegistration(reg)}  
+        {returnRegistration(reg)}
         <Routes>
           <Route path='/' exact />
           <Route path='/allPosts' element={<AllPosts/>} />

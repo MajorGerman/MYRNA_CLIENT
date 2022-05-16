@@ -1,21 +1,23 @@
 .modal {
     display: flex;
     justify-content: center;
-    margin-top: 80px;
+    margin-top: 3vw;
+    width: fit-content;
+    transform:translateX(100%);
+    outline-style: none;
 }
 
 .logPage {
     width: 30vw;
-    height: 65vh;
+    height: fit-content;
     background-color: white;
-    border-radius: 6px;
+    border-radius: 0.5vw;
     border-color: #E9E9E9;
-    border-width: 0.75px;
+    border-width: 0.1vw;
     border-style: solid;
-    padding: 4px;
+    padding: 1vw;
     text-align: center;
 }
-
 
 .logDiv {
     justify-content: center;
@@ -29,8 +31,39 @@
 }
 
 .logForm {
-    margin-bottom: 1vw;
+    margin-bottom: 2vw;
 }
+
+.logFormButtonsDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logFormButtons {
+    width: 24vw;
+    margin-top: 0.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logFormButtons > * {
+    margin: 1.5vw 1vw 1.5vw 1vw;
+}
+
+.logFormButtons > p {
+    color: #067BE2;
+    font-size: 1.045vw;
+    transition: 0.2s;
+}
+
+.logFormButtons > p:hover {
+    opacity: 75%;
+    cursor: pointer;
+}
+
 
 .logXDiv {
     display: flex;
@@ -38,16 +71,19 @@
 }
 
 .logX {
-    text-decoration: none;
-    color: #067BE2;
-    margin: 1vw;
-    font-size: 1.5vw;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
+.logX > img {
+    width: 0.95vw;
+    filter: invert(37%) sepia(48%) saturate(6009%) hue-rotate(193deg) brightness(97%) contrast(95%);
+}
 
 .logFormTitle {
     width: 100%;
-    margin: 12px 0px 16px 0px;
+    padding: 2.2vw 0vw 1.6vw 0vw;
     display: flex;
     justify-content: center;
 }
@@ -63,47 +99,52 @@
 
 .logRegDiv {
     text-align: center;
+    margin-bottom: 2vw;
 }
 
 .logRegDiv > p {
     color: #989898;
     font-size: 1.25vw;
-    margin-top: 2vw;
+    margin-top: 4vw;
 }
 
 hr {
-    height: 1px;
+    height: 0.05vw;
     border: none;
     background-color: #ECECEC;
 }
 
 input {
-    border-radius: 8px;
+    border-radius: 0.65vw;
 }
 
 input[type="text"] {
+    width: 15vw;
     font-size: 1vw;
-    margin: 12px;
+    margin: 0.5vw;
+    padding: 0.6vw;
     border-style: solid;
     border-color: #E9E9E9;
-    border-width: 0.75px;
+    border-width:  0.1vw;
     background-color: #f0f0f0;
 }
 
 input[type="email"] {
+    width: 15vw;
     font-size: 1vw;
-    margin: 12px;
+    margin: 0.5vw;
+    padding: 0.6vw;
     border-style: solid;
     border-color: #E9E9E9;
-    border-width: 0.75px;
+    border-width:  0.1vw;
     background-color: #f0f0f0;
 }
 
 input[type="submit"] {
+    width: fit-content;
     border-width: 0px;
-    padding: 8px;
-    margin: 24px 2px 24px 4px;
-    max-width: 30%;
+    padding: 0.55vw 1.2vw 0.55vw 1.2vw !important;
+    margin: 0.6vw;
     transition: 0.2s;
     background-color: #067BE2;
     color: white;
@@ -111,10 +152,12 @@ input[type="submit"] {
 }
 
 input[type="button"] {
-    border-width: 0px;
-    padding: 8px;
-    margin: 24px 2px 16px 4px;
-    max-width: 20%;
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;
+    padding: 0.55vw 1.2vw 0.55vw 1.2vw !important;
+    margin: 1.3vw;
+    width: fit-content;
     transition: 0.2s;
     background-color: #f0f0f0;
     color: black;
@@ -123,9 +166,11 @@ input[type="button"] {
 
 input[type="submit"]:hover {
     opacity: 75%;
+    cursor: pointer;
 }
 
 input[type="button"]:hover {
     opacity: 75%;
+    cursor: pointer;
 }
 
