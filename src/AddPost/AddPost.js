@@ -5,15 +5,13 @@ import './AddPost.css';
 function AddPost (props) {
 
     let query = gql`
-    
-    
-    
-    
-    
-    
-    
-    
+
     `; 
+
+    function addPost(e) {
+        e.preventDefault();
+
+    }
    
     return(
 
@@ -23,20 +21,20 @@ function AddPost (props) {
 
                 <p className='addPostText'> Add Post </p> 
 
-                    <form method="POST">
+                    <form method="POST" onSubmit={addPost}>
 
-                    <div className='addPostForm'>
+                        <div className='addPostForm'>
 
-                        <div className='addPostFormText'>
-                            <input type="text" placeholder="My last dinner" name="header"></input>
-                            <input type="text" placeholder="This pie was so finger lickin' good..." name="content"></input>    
+                            <div className='addPostFormText'>
+                                <textarea onKeyDown={(e) => {if(e.keyCode == 13) { e.preventDefault(); }}} maxlength="50" placeholder="My last dinner" name="header"></textarea>
+                                <textarea onKeyDown={(e) => {if(e.keyCode == 13) { e.preventDefault(); }}} maxlength="800" placeholder="This pie was so finger lickin' good..." name="content"></textarea>    
+                            </div>
+                            
+                            <div className='addPostFormSubmit'>
+                                <input type="submit" value=" Here we go "></input>
+                            </div>
+
                         </div>
-                        
-                        <div className='addPostFormSubmit'>
-                            <input type="submit" value=" Here we go "></input>
-                        </div>
-
-                    </div>
 
                     </form>
 

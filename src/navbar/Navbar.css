@@ -70,16 +70,20 @@
 
 
 .navbar > div > div > .navlink {
+    display: flex;
     text-decoration: none;
     color: black;
     font-size: 26px;
 }
+
+.navbar > div > div > .navlink > img {
+    margin-top: 5px;
+    height: 40px;
+}
+
 
 
 .navbar > div > div:hover {
     opacity: 60%;
     cursor: pointer;
 }
-
-
-

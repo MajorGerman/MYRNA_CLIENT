@@ -1,3 +1,4 @@
+
 .post {
     background-color: white;
     width: 700px;
@@ -10,21 +11,44 @@
     border-style: solid;
 }
 
-.post > .postAuthor {
+
+
+.post > .postTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post > .postTop > .postAuthor {
     display: flex;
     align-items: center;
 }
 
-.post > .postAuthor > img {
+
+.post > .postTop > .postAuthor > img {
     border-radius: 12px;
     width: 40px;
     margin: 16px 8px 16px 16px;
+    cursor: pointer;
 }
 
-.post > .postAuthor > p {
+.post > .postTop > .postAuthor > p {
     font-size: 21px;
     margin: 2px 4px;
+    cursor: pointer;
 }
+
+.post > .postTop > .postDots > img {
+    cursor: pointer;
+    margin: 18px 20px 18px 18px;
+    width: 32px;
+    transition: 0.2s;
+}
+
+.post > .postTop > .postDots > img:hover {
+    opacity: 75%;
+}
+
 
 
 .post > .postHr {
@@ -39,6 +63,7 @@
     border: none;
     background-color: #ECECEC;
 }
+
 
 
 .post > .postHeader {
@@ -59,8 +84,38 @@
 
 .post > .postContent > p {
     font-size: 26px;
-    margin: 2px 24px 12px 24px;
+    margin: 4px 24px 16px 26px;
 }
+
+
+
+.post > .postLike {
+    display: flex;
+    align-items: center;    
+}
+
+.post > .postLike > img {
+    margin: 24px;
+    cursor: pointer;  
+    transition: 0.2s;
+    filter: brightness(0) saturate(100%) invert(85%) sepia(0%) saturate(16%) hue-rotate(74deg) brightness(89%) contrast(89%);
+}
+
+.post > .postLike > img:hover {
+    opacity: 75%;
+    transform: rotateZ(-15deg) scale(1.2);
+}
+
+.post > .postLike > p {
+    font-size: 24px;
+    color:#067BE2;
+}
+
+.blue {
+    color:#067BE2;
+}
+
+
 
 .post > .postComment {
     display: flex;
@@ -84,10 +139,10 @@
 .post > .postComment > i {
     cursor: pointer;
     transition: 0.2s;
-    color: #b8b8b8;
+    color: #067BE2;
     margin: 16px 16px 12px 12px;
 }
 
 .post > .postComment > i:hover {
-    color: #067BE2;
+    opacity: 75%;
 }

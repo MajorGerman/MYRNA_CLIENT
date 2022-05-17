@@ -7,7 +7,8 @@
 }
 
 .addPostPage > .addPost {
-    width: 50%;
+    width: 960px;
+    max-width: 78%;
     background-color:white;
     border-radius: 12px;
     border-color: #E9E9E9;
@@ -20,6 +21,7 @@
 .addPostPage > .addPost > .addPostText {
     font-size: 36px;
     margin: 20px 0px;
+    display: inline-block;
 }
 
 .addPostPage > .addPost > form > .addPostForm > div {
@@ -31,26 +33,18 @@
     justify-content: end;
 }
 
-.addPostPage > .addPost > form > .addPostForm > .addPostFormSubmit > input {
-    margin: 15px 20px;
-}
 
-
-
-.addPostFormText > input {
-    border-radius: 12px;
-}
 
 .addPostFormSubmit > input {
     border-radius: 12px;
     width: fit-content;
     border-width: 0px;
     padding: 10px 15px;
-    margin: 10px;
+    margin: 24px;
     transition: 0.2s;
     background-color: #067BE2;
     color: white;
-    font-size: 18px;
+    font-size: 21px;
     cursor: pointer;
 }
 
@@ -58,8 +52,14 @@
     opacity: 75%;
 }
 
-.addPostFormText > input[type="text"] {
-    font-size: 1vw;
+.addPostFormText > textarea {
+    max-width: 80%;
+    min-width: 60%;
+    resize: none;
+    overflow:hidden;
+    font-style: italic;
+    border-radius: 12px;
+    font-size: 24px;
     margin: 10px 5px;
     padding: 15px;
     border-style: solid;
@@ -68,6 +68,12 @@
     background-color: #f0f0f0;
 }
 
-.addPostFormText > input[name="content"] {
-    width: 80%;
+.addPostFormText > textarea[name="header"] {
+    height: 32px;
+    width: 70%;
+}
+
+.addPostFormText > textarea[name="content"] {
+    height: 120px;
+    width: 85%;
 }

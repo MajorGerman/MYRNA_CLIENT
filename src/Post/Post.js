@@ -5,12 +5,16 @@ import { gql } from 'graphql-request';
 import './Post.css';
 
 import Avatar1Img from '../img/avatar1.jpg';
+import DotsImg from '../img/dots.svg'
+import PacmanImg from '../img/pacman.svg'
 
 function Post(props) {
 
     const [comments,] = useState(props.post.comments)
 
     const [content, setContent] = useState("");
+
+    const [like, setLike] = useState("");
 
     let query = gql`
         mutation AddNewComment {
@@ -47,13 +51,26 @@ function Post(props) {
 
     }
 
+    function changeLike() {
+        if (like === "") {
+            setLike("className='blue'");
+        } else {
+            setLike("");
+        }
+    }
+
   return (
 
     <div className="post" id={props.post.id}>
-        <div className="postAuthor">
-            <img src={Avatar1Img}></img>
-            <p> {props.post.author.first_name} </p> 
-            <p> {props.post.author.last_name} </p>
+        <div className="postTop">
+            <div className="postAuthor">
+                <img src={Avatar1Img}></img>
+                <p> {props.post.author.first_name} </p> 
+                <p> {props.post.author.last_name} </p>
+            </div>
+            <div className="postDots">
+                <img src={DotsImg}></img>
+            </div>
         </div>
         <div className="postHr">
             <hr></hr>    
@@ -64,11 +81,12 @@ function Post(props) {
         <div className="postContent">
             <p> {props.post.content} </p>
         </div>
-        <div className="postHr">
-            <hr></hr>    
+        <div className="postLike">
+            <img like onClick={changeLike} src={PacmanImg}></img>
+            <p> {props.post.likes} </p>
         </div>
         <div className="postComments">
-        {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
+            {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
         </div>
         <div className="postComment">
             <input className='inputcont' placeholder='Express your opinion' type="text"></input>

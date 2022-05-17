@@ -8,6 +8,7 @@ import meetingsImg from '../img/meetings.svg';
 import latestImg from '../img/latest.svg'
 import burgerImg from '../img/burger.svg'
 import notifyImg from '../img/bell.svg'
+import addPostImg from '../img/addpost.svg'
 
 import NotificationBar from 'react-notification-bar';
 
@@ -54,7 +55,7 @@ function Navbar (props) {
 
             <div className="navbar-right">
                 <div>
-                    <img src={homeImg}></img> <Link className="navlink" to="/addPost"> Home </Link>
+                    <Link className="navlink" to="/addPost"> <img src={addPostImg}></img> </Link>
                 </div>       
                 <div onClick={notifyOnClick}>
                     <img src={notifyImg}></img>
