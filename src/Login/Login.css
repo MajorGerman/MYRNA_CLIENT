@@ -3,7 +3,7 @@
     justify-content: center;
     margin-top: 3vw;
     width: fit-content;
-    transform:translateX(100%);
+    transform: translateX(100%);
     outline-style: none;
 }
 
@@ -108,17 +108,28 @@
     margin-top: 4vw;
 }
 
-hr {
+.logPage > hr {
     height: 0.05vw;
     border: none;
     background-color: #ECECEC;
 }
 
-input {
+
+.logForm > input {
     border-radius: 0.65vw;
 }
 
-input[type="text"] {
+.logFormButtons > input {
+    border-radius: 0.65vw;
+}
+
+.logRegDiv > input {
+    border-radius: 0.65vw;
+}
+
+
+
+.logForm > input[type="text"] {
     width: 15vw;
     font-size: 1vw;
     margin: 0.5vw;
@@ -129,7 +140,7 @@ input[type="text"] {
     background-color: #f0f0f0;
 }
 
-input[type="email"] {
+.logForm > input[type="email"] {
     width: 15vw;
     font-size: 1vw;
     margin: 0.5vw;
@@ -140,7 +151,7 @@ input[type="email"] {
     background-color: #f0f0f0;
 }
 
-input[type="submit"] {
+.logFormButtons > input[type="submit"] {
     width: fit-content;
     border-width: 0px;
     padding: 0.55vw 1.2vw 0.55vw 1.2vw !important;
@@ -151,7 +162,7 @@ input[type="submit"] {
     font-size: 1vw;
 }
 
-input[type="button"] {
+.logRegDiv > input[type="button"] {
     border-color: #E9E9E9;
     border-width: 0.1vw;
     border-style: solid;
@@ -164,12 +175,12 @@ input[type="button"] {
     font-size: 1vw;
 }
 
-input[type="submit"]:hover {
+.logFormButtons > input[type="submit"]:hover {
     opacity: 75%;
     cursor: pointer;
 }
 
-input[type="button"]:hover {
+.logRegDiv > input[type="button"]:hover {
     opacity: 75%;
     cursor: pointer;
 }

@@ -53,6 +53,9 @@ function Navbar (props) {
             </div>
 
             <div className="navbar-right">
+                <div>
+                    <img src={homeImg}></img> <Link className="navlink" to="/addPost"> Home </Link>
+                </div>       
                 <div onClick={notifyOnClick}>
                     <img src={notifyImg}></img>
                 </div>

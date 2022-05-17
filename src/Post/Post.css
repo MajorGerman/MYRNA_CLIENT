@@ -1,0 +1,93 @@
+.post {
+    background-color: white;
+    width: 700px;
+    max-width: 90%;
+    height: fit-content;
+    margin: 20px 0px;
+    border-radius: 0.5vw;
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;
+}
+
+.post > .postAuthor {
+    display: flex;
+    align-items: center;
+}
+
+.post > .postAuthor > img {
+    border-radius: 12px;
+    width: 40px;
+    margin: 16px 8px 16px 16px;
+}
+
+.post > .postAuthor > p {
+    font-size: 21px;
+    margin: 2px 4px;
+}
+
+
+.post > .postHr {
+    display: flex;
+    align-items: center; 
+    justify-content: center ;  
+}
+
+.post > .postHr > hr {
+    width: 95%;
+    height: 0.05vw;
+    border: none;
+    background-color: #ECECEC;
+}
+
+
+.post > .postHeader {
+    display: flex;
+    align-items: center;
+}
+
+.post > .postHeader > p {
+    font-size: 38px;
+    margin: 10px 0px 4px 24px;
+}
+
+.post > .postContent {
+    display: flex;
+    align-items: center;
+    text-align: left !important;
+}
+
+.post > .postContent > p {
+    font-size: 26px;
+    margin: 2px 24px 12px 24px;
+}
+
+.post > .postComment {
+    display: flex;
+    align-items: center;
+}
+
+.post > .postComment > input {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin: 16px 4px 12px 16px;
+    width: 100%;
+    padding: 5px;
+    border-style: solid;
+    border-color: #E9E9E9;
+    border-width:  0.1vw;
+    border-radius: 0.4vw;
+    background-color: #f0f0f0;
+}
+
+.post > .postComment > i {
+    cursor: pointer;
+    transition: 0.2s;
+    color: #b8b8b8;
+    margin: 16px 16px 12px 12px;
+}
+
+.post > .postComment > i:hover {
+    color: #067BE2;
+}

@@ -1,9 +1,19 @@
 .homePage {
     width: 100%;
-    text-align: center;
     margin-top: 20px;
+    text-align: center;
 }
 
-.homePage > .homePageText {
+.homePageText {
     font-size: 36px;
+}
+
+.homePage > .homePagePostsDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+.homePage > .homePagePostsDiv > .homePagePosts {
+    width: fit-content;
 }

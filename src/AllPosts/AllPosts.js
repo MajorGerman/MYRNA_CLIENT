@@ -5,7 +5,7 @@ import { gql } from 'graphql-request';
 
 function AllPosts (props) {
 
-    let posts = [];
+    const [posts, setPosts] = useState([]);
     
     let query = gql`
         query GetAllPosts {
@@ -17,6 +17,15 @@ function AllPosts (props) {
                     id
                     first_name
                     last_name
+                }
+                comments {
+                    id
+                    content
+                    author {
+                        id
+                        first_name
+                        last_name
+                    }
                 }
             }
         }
@@ -46,19 +55,23 @@ function AllPosts (props) {
     useEffect(() =>{
         getData()
         .then((a) =>{
-            posts = a.data.getAllPosts;
-            console.log(posts)
+            setPosts(a.data.getAllPosts);
+            a = a.data.getAllPosts;
+            console.log(a)
         })
         
     }, [])
 
     return(
+
             <div className='homePage'>
 
                 <p className='homePageText'>Home</p>
 
-                <div>
-                    {posts.map((post, key) => <Post key={key} post={post}/>)}
+                <div className="homePagePostsDiv">
+                    <div className='homePagePosts'>
+                        {posts.map((post) => <Post key={post.id} post={post}/>)}
+                    </div>
                 </div>
 
             </div>

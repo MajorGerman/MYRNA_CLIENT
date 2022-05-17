@@ -9,6 +9,7 @@ import Registration from '../Registration/Registration';
 import Login from '../Login/Login';
 import Map from '../Map/Map';
 import Notification from '../Notification/Notification';
+import AddPost from '../AddPost/AddPost';
 
 function App() {
 
@@ -48,7 +49,7 @@ function App() {
           <Route path='/subscriptionsPosts' component={AllPosts} />
           <Route path='/userPosts' component={AllPosts} />
           <Route path='/subscriptions' component={AllPosts} />
-          <Route path='/addPost' component={AllPosts} />
+          <Route path='/addPost' element={<AddPost/>} />
           <Route path='/allUpdates' element={<AllUpdates/>} />
           <Route path='/map' element={<Map/>} />
         </Routes>

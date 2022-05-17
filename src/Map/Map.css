@@ -18,6 +18,7 @@
 .map {
     border-radius: 16px;
     width: 700px;
+    max-width: 80%;
     height: 500px;
     border-color: #E9E9E9;
     border-width: 1px;

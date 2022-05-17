@@ -13,8 +13,8 @@ function Login(props) {
   const [isOpen, changeOpen] = useState(true);
 
   let query = gql`
-    mutation Signin($email: String!, $password: String!) {
-      signin(email: ${email}, password: ${pass}) {
+    mutation Signin {
+      signin(email: "${email}", password: "${pass}") {
         token
         user {
           id
