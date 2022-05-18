@@ -40,8 +40,10 @@ function Login(props) {
           body: JSON.stringify({"query": query})
       })
 
-      console.log(await res)
-      console.log(await res.json());
+      let a = await res.json();
+      console.log(a.data.signin.user.id);
+      localStorage.setItem("user_id", a.data.signin.user.id);
+      localStorage.setItem("token_id", a.data.signin.token);
 
     } catch (err) {
 
@@ -84,7 +86,7 @@ function Login(props) {
 
               <form className='logForm' method='POST' onSubmit={handleSubmit}>
                 <input type="email" name="email" onChange={handleEmailChange} value={email} placeholder='Email' required></input><br></br>
-                <input type="text"  name="pass" onChange={handlePassChange} value={pass} placeholder='Password' required></input><br></br>
+                <input type="password"  name="pass" onChange={handlePassChange} value={pass} placeholder='Password' required></input><br></br>
                 <div className="logFormButtonsDiv">
                   <div className='logFormButtons'>
                     <input type="submit" value="Log In"></input>

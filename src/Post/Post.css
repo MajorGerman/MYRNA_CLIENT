@@ -27,14 +27,14 @@
 
 .post > .postTop > .postAuthor > img {
     border-radius: 12px;
-    width: 40px;
+    width: 42px;
     margin: 16px 8px 16px 16px;
     cursor: pointer;
 }
 
 .post > .postTop > .postAuthor > p {
     font-size: 21px;
-    margin: 2px 4px;
+    margin: 2px 2.5px;
     cursor: pointer;
 }
 
@@ -69,12 +69,14 @@
 .post > .postHeader {
     display: flex;
     align-items: center;
+    text-align: left !important;
 }
 
 .post > .postHeader > p {
     font-size: 38px;
     margin: 10px 0px 4px 24px;
 }
+
 
 .post > .postContent {
     display: flex;
@@ -92,14 +94,21 @@
 .post > .postLike {
     display: flex;
     align-items: center;    
+
 }
 
 .post > .postLike > img {
-    margin: 24px;
+    margin: 18px 8px 18px 20px;
     cursor: pointer;  
     transition: 0.2s;
     filter: brightness(0) saturate(100%) invert(85%) sepia(0%) saturate(16%) hue-rotate(74deg) brightness(89%) contrast(89%);
 }
+
+.post > .postLike > .blue {
+    filter: brightness(0) saturate(100%) invert(35%) sepia(39%) saturate(5441%) hue-rotate(192deg) brightness(96%) contrast(95%);
+}
+
+
 
 .post > .postLike > img:hover {
     opacity: 75%;
@@ -107,6 +116,7 @@
 }
 
 .post > .postLike > p {
+    height: fit-content;
     font-size: 24px;
     color:#067BE2;
 }

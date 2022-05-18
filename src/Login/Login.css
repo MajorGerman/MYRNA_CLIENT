@@ -129,7 +129,7 @@
 
 
 
-.logForm > input[type="text"] {
+.logForm > input[type="password"] {
     width: 15vw;
     font-size: 1vw;
     margin: 0.5vw;

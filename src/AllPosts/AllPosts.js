@@ -27,6 +27,7 @@ function AllPosts (props) {
                         last_name
                     }
                 }
+                likes
             }
         }
     `;

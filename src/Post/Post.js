@@ -14,7 +14,8 @@ function Post(props) {
 
     const [content, setContent] = useState("");
 
-    const [like, setLike] = useState("");
+    const [like, setLike] = useState(props.post.likes);
+    const [likeStyle, setLikeStyle] = useState("");
 
     let query = gql`
         mutation AddNewComment {
@@ -28,6 +29,12 @@ function Post(props) {
             content
             }
         }  
+    `;  
+
+    let query2 = gql`
+        mutation LikePost {
+            likePost(user_id: ${localStorage.getItem("user_id")}, post_id: ${props.post.id})
+        }
     `; 
 
     function addComment(e) {
@@ -51,12 +58,30 @@ function Post(props) {
 
     }
 
-    function changeLike() {
-        if (like === "") {
-            setLike("className='blue'");
-        } else {
-            setLike("");
-        }
+    function likePost() { 
+
+        try {
+
+            return fetch("https://myrna-server.herokuapp.com/", {
+                headers: {'Content-Type': 'application/json'},
+                method: 'POST',
+                body: JSON.stringify({"query": query2})
+            }).then((a) =>{
+                return a.json()
+            }).then((b) => {
+                if (b.data.likePost) {
+                    setLike(like + 1)
+                    setLikeStyle("blue");
+                } else {
+                    setLike(like - 1);
+                    setLikeStyle("");                    
+                }
+            })     
+
+        } catch (err) {
+            console.log(err)
+        } 
+
     }
 
   return (
@@ -82,15 +107,15 @@ function Post(props) {
             <p> {props.post.content} </p>
         </div>
         <div className="postLike">
-            <img like onClick={changeLike} src={PacmanImg}></img>
-            <p> {props.post.likes} </p>
+            <img className={likeStyle} onClick={likePost} src={PacmanImg}></img>
+            <p> {like} </p>
         </div>
         <div className="postComments">
             {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
         </div>
         <div className="postComment">
             <input className='inputcont' placeholder='Express your opinion' type="text"></input>
-            <i onClick={addComment} class="fa fa-paper-plane" aria-hidden='true'></i>
+            <i onClick={addComment} className="fa fa-paper-plane" aria-hidden='true'></i>
         </div>
     </div>
 
