@@ -10,6 +10,9 @@ function Login(props) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
+  const [errorStyle, setErrorStyle] = useState("logFormError hidden");
+  const [errorText, setErrorText] = useState("");
+
   const [isOpen, changeOpen] = useState(true);
 
   let query = gql`
@@ -43,11 +46,14 @@ function Login(props) {
       let a = await res.json();
       console.log(a.data.signin.user.id);
       localStorage.setItem("user_id", a.data.signin.user.id);
-      localStorage.setItem("token_id", a.data.signin.token);
+      localStorage.setItem("token", a.data.signin.token);
+      window.location.href = "http://localhost:3000/allPosts";
 
     } catch (err) {
 
-      console.log(err)
+      console.error(err);
+      setErrorText("Wrong Email or Password!")
+      setErrorStyle("logFormError");
 
     } 
     
@@ -82,6 +88,10 @@ function Login(props) {
 
               <div className="logFormTitle">
                 <p className="logFormTitleText"> Sign in </p>
+              </div>
+
+              <div className={errorStyle}>
+                <p className="logFormErrorText">{errorText}</p>
               </div>
 
               <form className='logForm' method='POST' onSubmit={handleSubmit}>

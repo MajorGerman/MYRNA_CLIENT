@@ -1,0 +1,68 @@
+.profilePage {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.profilePageText {
+    font-size: 36px;
+}
+
+.profilePage > .profileDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profilePage > .profileDiv > .profile {
+    max-width: 80%;
+    margin: 20px;
+    width: 600px;
+    background-color: white;
+    border-radius: 0.5vw;
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;
+}
+
+.profilePage > .profileDiv > .profile > .name {
+    font-size: 32px;
+    font-weight: 600;
+    font-style: italic;
+    margin: 12px;
+}
+
+
+.profilePage > .profileDiv > .profile > .profileInfo > {
+    display: flex;
+    justify-content: center;
+}
+
+.profilePage > .profileDiv > .profile > .profileInfo > .avatar {
+    border-radius: 32px;
+}
+
+
+.profilePage > .profileDiv > .profile > .profileInfo > .userInfo {
+    font-size: 22px;
+    margin: 6px;
+}
+
+
+.profilePage > .profileDiv > .profile > input[type="button"] {
+    width: fit-content;
+    border-color: #E9E9E9;
+    border-style: none;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 8px 16px !important;
+    margin: 12px;
+    background-color: #067BE2;
+    color: white;
+    transition: 0.2s;
+}
+
+.profilePage > .profileDiv > .profile > input[type="button"]:hover {
+    opacity: 75%;
+    cursor: pointer;
+}

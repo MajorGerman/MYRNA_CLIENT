@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import {gql} from 'graphql-request';
 
 import userImg from '../img/user.svg';
 import homeImg from '../img/home.svg';
@@ -19,7 +20,49 @@ import "./Navbar.css"
 
 function Navbar (props) {
 
-    //if (userRoles.some(userRole => userRole === ''))
+    const [userRoles, setUserRoles] = useState([]);
+    const [hidden, setHidden] = useState("hidden");
+
+    let query = gql`
+        query GetUserById {
+            getUserById(id: ${localStorage.getItem("user_id")}) {
+                roles
+            }
+        }
+    `;
+
+    async function getData() {
+
+        try {
+
+            return await fetch("https://myrna-server.herokuapp.com/", {
+                headers: {'Content-Type': 'application/json'},
+                method: 'POST',
+                body: JSON.stringify({"query": query})
+            }).then((a) =>{
+                return a.json()
+            }).then((b) => {
+                return b
+            })
+
+        } catch (err) {
+            console.log(err)
+        }       
+    }
+
+    useEffect(() => {
+        getData().then((a) =>{
+            a = a.data.getUserById.roles;
+            console.log(a);
+            setUserRoles(a);
+        }).finally((b) => {
+            if (userRoles.some(userRole => userRole === "USER")) {
+                setHidden("");
+            }
+        });
+    }, [])
+
+
 
     let notifyOnClick = () => {
         props.setNotify(true)
@@ -27,7 +70,12 @@ function Navbar (props) {
     }
 
     let loginOnClick = () =>{
-        props.setLogin(true)
+        if (localStorage.getItem("user_id") != null && localStorage.getItem("user_id") !== ""
+        && localStorage.getItem("token") != null && localStorage.getItem("token") !== "") {
+            window.location.href = "http://localhost:3000/profile";
+        } else {
+            props.setLogin(true)
+        }
     }
 
     return(
@@ -45,16 +93,16 @@ function Navbar (props) {
                 <div>
                     <img src={latestImg}></img> <Link className="navlink" to="/allUpdates"> Latest Updates </Link>
                 </div>
-                <div>
+                <div className={hidden}>
                     <img src={meetingsImg}></img> <Link className="navlink" to="/meetings"> Meetings </Link>
                 </div>
-                <div>
+                <div className={hidden}>
                     <img style={{width: '16px'}} src={mapImg}></img> <Link className="navlink" to="/map"> Map </Link>
                 </div>
             </div>
 
             <div className="navbar-right">
-                <div>
+                <div className={hidden}>
                     <Link className="navlink" to="/addPost"> <img src={addPostImg}></img> </Link>
                 </div>       
                 <div onClick={notifyOnClick}>

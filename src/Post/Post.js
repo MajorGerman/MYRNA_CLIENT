@@ -19,7 +19,7 @@ function Post(props) {
 
     let query = gql`
         mutation AddNewComment {
-            addNewComment(user_id: ${1}, post_id: ${props.post.id}, content: ${document.getElementsByClassName('inputcont').value}) {
+            addNewComment(user_id: ${localStorage.getItem("user_id")}, post_id: ${props.post.id}, content: ${document.getElementsByClassName('inputcont').value}) {
             id
             author {
                 id

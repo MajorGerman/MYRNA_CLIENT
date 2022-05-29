@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar from '../navbar/Navbar';
+import Navbar from '../Navbar/Navbar';
 import AllPosts from '../AllPosts/AllPosts';
 import AllUpdates from '../AllUpdates/AllUpdates';
 import Registration from '../Registration/Registration';
@@ -10,6 +10,7 @@ import Login from '../Login/Login';
 import Map from '../Map/Map';
 import Notification from '../Notification/Notification';
 import AddPost from '../AddPost/AddPost';
+import Profile from '../Profile/Profile';
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
           <Route path='/addPost' element={<AddPost/>} />
           <Route path='/allUpdates' element={<AllUpdates/>} />
           <Route path='/map' element={<Map/>} />
+          <Route path='/profile' element={<Profile/>} />
         </Routes>
         
       </Router>

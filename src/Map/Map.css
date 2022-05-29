@@ -8,7 +8,7 @@
     font-size: 36px;
 }
 
-.mapDiv {
+.mapPage > .mapDiv {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -16,11 +16,63 @@
 }
 
 .map {
-    border-radius: 16px;
-    width: 700px;
-    max-width: 80%;
-    height: 500px;
-    border-color: #E9E9E9;
-    border-width: 1px;
+    border-radius: 16px !important;
+    width: 700px !important;
+    max-width: 80% !important;
+    height: 500px !important;
+    border-color: #E9E9E9 !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+}
+
+.mapPage > .nearPlacesText {
+    font-size: 36px;
+    margin: 20px;
+}
+
+.mapPage > .nearPlacesDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.mapPage > .nearPlacesDiv > .nearPlaces {
+    max-width: 90%;
+}
+
+
+.mapPage > .nearPlacesSearch { 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.mapPage > .nearPlacesSearch > input[type="text"] {
+    width: 420px;
+    font-size: 24px;
+    margin: 8px;
+    padding: 8px;
     border-style: solid;
+    border-color: #E9E9E9;
+    border-width:  0.1vw;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+
+.mapPage > .nearPlacesSearch > input[type="button"] {
+    width: 180px;
+    font-size: 24px;
+    margin: 8px;
+    padding: 8px;
+    transition: 0.2s;
+    background-color: #067BE2;
+    border-radius: 8px;
+    border-width: 0px;
+    color: white;
+}
+
+.mapPage > .nearPlacesSearch > input[type="button"]:hover {
+    opacity: 75%;
+    cursor: pointer;
 }

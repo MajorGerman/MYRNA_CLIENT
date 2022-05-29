@@ -1,0 +1,48 @@
+.placeBlock {
+    background-color: white;
+    width: 700px;
+    height: fit-content;
+    margin: 20px 0px;
+    border-radius: 12px;
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;
+}
+
+
+
+.placeBlock > .placeBlockTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.placeBlock > .placeBlockTop > .placeBlockAuthor {
+    display: flex;
+    align-items: center;
+}
+
+
+.placeBlock > .placeBlockTop > .placeBlockAuthor > img {
+    border-radius: 12px;
+    width: 42px;
+    margin: 16px 8px 16px 16px;
+    cursor: pointer;
+}
+
+.placeBlock > .placeBlockTop > .placeBlockAuthor > p {
+    font-size: 21px;
+    margin: 2px 2.5px;
+    cursor: pointer;
+}
+
+.placeBlock > .placeBlockTop > .placeBlockDots > img {
+    cursor: pointer;
+    margin: 18px 20px 18px 18px;
+    width: 32px;
+    transition: 0.2s;
+}
+
+.placeBlock > .placeBlockTop > .placeBlockDots > img:hover {
+    opacity: 75%;
+}
