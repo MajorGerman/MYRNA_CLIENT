@@ -1,64 +1,211 @@
-.regPage {
+.modal {
     display: flex;
+    justify-content: center;
+    margin-top: 3vw;
+    width: 100%;
+    outline-style: none;
+}
+
+.regPage {
+    width: 30vw;
+    height: fit-content;
+    background-color: white;
+    border-radius: 0.5vw;
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;
+    padding: 1vw;
+    text-align: center;
+}
+
+.regDiv {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 16px;
+}
+
+.regFormDiv {
+    width: 100%;
+    background-color: white;
 }
 
 .regForm {
-    width: 320px;
-    background-color: white;
-    border-radius: 8px;
+    margin-bottom: 2vw;
+}
+
+.regFormButtonsDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.regFormButtons {
+    width: 24vw;
+    margin-top: 0.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.regFormButtons > * {
+    margin: 1.5vw 1vw 1.5vw 1vw;
+}
+
+.regFormButtons > p {
+    color: #067BE2;
+    font-size: 1.045vw;
+    transition: 0.2s;
+}
+
+.regFormButtons > p:hover {
+    opacity: 75%;
+    cursor: pointer;
 }
 
 
+.regXDiv {
+    display: flex;
+    justify-content: end;
+}
+
+.regX {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.regX > img {
+    width: 0.95vw;
+    filter: invert(37%) sepia(48%) saturate(6009%) hue-rotate(193deg) brightness(97%) contrast(95%);
+}
+
 .regFormTitle {
     width: 100%;
-    margin: 12px 0px 16px 0px;
+    padding: 2.2vw 0vw 1.6vw 0vw;
     display: flex;
     justify-content: center;
 }
 
 .regFormTitle > .regFormTitleText {
-    font-size: 21px;
+    font-size: 2vw;
 }
 
 
-.regForm > form {
+.regFormDiv > form {
     text-align: center;
 }
 
-input {
-    padding: 6px;
-    width: 60%;
-    border-radius: 8px;
+
+.regRegDiv {
+    text-align: center;
+    margin-bottom: 2vw;
 }
 
-input[type="text"] {
-    margin: 7px;
+.regRegDiv > p {
+    color: #989898;
+    font-size: 1.25vw;
+    margin-top: 4vw;
+}
+
+
+.regPage > hr {
+    height: 0.05vw;
+    border: none;
+    background-color: #ECECEC;
+}
+
+
+.regForm > input {
+    border-radius: 0.65vw;
+}
+
+.regFormButtons > input {
+    border-radius: 0.65vw;
+}
+
+.regRegDiv > input {
+    border-radius: 0.65vw;
+}
+
+
+.regFormError {
+    margin: 0.2vw 0vw 1.2vw 0vw;
+}
+
+.regFormError > .regFormErrorText {
+    font-size: 1.1vw;
+    color: red;
+    font-weight: 600;
+    font-style: italic;
+}
+
+
+.regForm > input[type="password"] {
+    width: 15vw;
+    font-size: 1vw;
+    margin: 0.5vw;
+    padding: 0.6vw;
     border-style: solid;
-    border-color: #E0E0E0;
-    border-width: 0.75px;
+    border-color: #E9E9E9;
+    border-width:  0.1vw;
+    background-color: #f0f0f0;
 }
 
-input[type="email"] {
-    margin: 7px;
+.regForm > input[type="email"] {
+    width: 15vw;
+    font-size: 1vw;
+    margin: 0.5vw;
+    padding: 0.6vw;
     border-style: solid;
-    border-color: #E0E0E0;
-    border-width: 0.75px;
+    border-color: #E9E9E9;
+    border-width:  0.1vw;
+    background-color: #f0f0f0;
 }
 
-input[type="submit"] {
+.regForm > input[type="text"] {
+    width: 15vw;
+    font-size: 1vw;
+    margin: 0.5vw;
+    padding: 0.6vw;
+    border-style: solid;
+    border-color: #E9E9E9;
+    border-width:  0.1vw;
+    background-color: #f0f0f0;
+}
+
+.regFormButtons > input[type="submit"] {
+    width: fit-content;
     border-width: 0px;
-    padding: 6px;
-    margin: 12px 0px 16px 0px;
-    max-width: 40%;
-    transition: 0.3s;
+    padding: 0.55vw 1.2vw 0.55vw 1.2vw !important;
+    margin: 26px;
+    transition: 0.2s;
     background-color: #067BE2;
     color: white;
+    font-size: 1vw;
 }
 
-input[type="submit"]:hover {
-    opacity: 75%;
+.regRegDiv > a > button {
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;
+    border-radius: 12px;
+    padding: 0.55vw 1.2vw 0.55vw 1.2vw !important;
+    margin: 1.3vw;
+    width: fit-content;
+    transition: 0.2s;
+    background-color: #f0f0f0;
+    color: black;
+    font-size: 1vw;
 }
+
+.regFormButtons > input[type="submit"]:hover {
+    opacity: 75%;
+    cursor: pointer;
+}
+
+.regRegDiv > input[type="button"]:hover {
+    opacity: 75%;
+    cursor: pointer;
+}
+

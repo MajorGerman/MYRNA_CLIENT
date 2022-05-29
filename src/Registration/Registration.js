@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {request, gql} from 'graphql-request';
-//import "./Registration.css"
+import "./Registration.css"
 
 function Registration (props) {
 
@@ -8,6 +8,9 @@ function Registration (props) {
   const [pass, setPass] = useState("");
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastname] = useState("");
+
+  const [errorStyle, setErrorStyle] = useState("");
+  const [errorText, setErrorText] = useState("");
 
   let query = gql`
     mutation Signup {
@@ -23,7 +26,7 @@ function Registration (props) {
     }
   `;
 
-  async function handleSubmit(e) {
+  async function signUp(e) {
     e.preventDefault();
 
     try {
@@ -37,11 +40,11 @@ function Registration (props) {
       console.log(await res)
       console.log(await res.json());
 
-      //props.setUserToken()
+      window.location.href = "http://localhost:3000/profile";
 
     } catch (err) {
 
-      console.log(err)
+      console.reg(err)
 
     } 
     
@@ -65,30 +68,38 @@ function Registration (props) {
     
   return (
 
-    <div className="regPage">
+    <div className='modal'>
 
-      <div className="regForm">
+      <div className="regPage">
 
-        <div className="regFormTitle">
-          <p className="regFormTitleText"> Registration </p>
-        </div>
+          <div className="regFormDiv">
 
-        <form method='POST' onSubmit={handleSubmit}>
+            <div className="regFormTitle">
+              <p className="regFormTitleText"> Sign Up </p>
+            </div>
 
-          <input type="email" name="email" onChange={handleEmailChange} value={email} placeholder='Email' required></input><br></br>
-          <input type="text" minLength={9} name="pass" onChange={handlePassChange} value={pass} placeholder='Password' required></input><br></br>
-          <input type="text" name="firstname" onChange={handleFirstnameChange} value={firstName} placeholder='First Name' required></input><br></br>
-          <input type="text" name="lastname" onChange={handleLastnameChange} value={lastName} placeholder='Last Name' required></input><br></br>
+            <div className={errorStyle}>
+              <p className="regFormErrorText">{errorText}</p>
+            </div>
 
-          <input type="submit" value="Sign Up"></input>
+            <form className='regForm' method='POST' onSubmit={signUp}>
+              <input type="email" name="email" onChange={handleEmailChange} value={email} placeholder='Email' required></input><br></br>
+              <input type="password"  name="pass" minLength={9} onChange={handlePassChange} value={pass} placeholder='Password' required></input><br></br>
+              <input type="text" name="firstname" onChange={handleFirstnameChange} value={firstName} placeholder='First Name' required></input><br></br>
+              <input type="text" name="lastname" onChange={handleLastnameChange} value={lastName} placeholder='Last Name' required></input><br></br>
+              <div className="regFormButtonsDiv">
+                <div className='regFormButtons'>
+                  <input type="submit" value="Let's create an account"></input>
+                </div>
+              </div>
+            </form>
 
-        </form>
+          </div>
 
       </div>
-
+      
     </div>
 
-    
   );
 }
 

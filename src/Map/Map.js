@@ -15,19 +15,6 @@ import env from 'react-dotenv';
 function Map (props) {
 
   const [nearPlaces, setNearPlaces] = useState([]);
-      
-  let map = new ol.Map({
-      target: 'map',
-      layers: [
-        new layer.Tile({
-          source: new source.OSM()
-        })
-      ],
-      view: new ol.View({
-        center: proj.fromLonLat([27.4199823, 59.3577613]),
-        zoom: 4
-      })
-    });
 
   let query = gql`
     //validateToken
@@ -51,10 +38,23 @@ function Map (props) {
   }
 
   useEffect(() => {
+    let map = new ol.Map({
+      target: 'map',
+      layers: [
+        new layer.Tile({
+          source: new source.OSM()
+        })
+      ],
+      view: new ol.View({
+        center: proj.fromLonLat([27.4199823, 59.3577613]),
+        zoom: 4
+      })
+    });
+
     nearPlaces.push({"id": 1, "name": "lol"})
     nearPlaces.push({"id": 2, "name": "kek"})
-    props.setLogin(true);
-    window.location.href = "http://localhost:3000/allPosts";
+
+    // window.location.href = "http://localhost:3000/allPosts";
     // getData().then((a) =>{
     //   a = a.data.validateToken;
     //   console.log(a);
@@ -63,7 +63,7 @@ function Map (props) {
     //     props.setLogin(true);
     //   }
     // });
-  }, [nearPlaces])
+  }, [])
 
   return(
       <div className='mapPage'>
@@ -73,7 +73,7 @@ function Map (props) {
           </div>
           <p className='nearPlacesText'> Places near you </p>
           <div className='nearPlacesSearch'>
-              <input type="text" placeholder='Pepperoni Pizza...'></input>
+              <input type="text" placeholder='Pitsameistrid...'></input>
               <input type="button" value=" Search "></input>
           </div>
           <div className='nearPlacesDiv'>
@@ -86,6 +86,3 @@ function Map (props) {
 }
 
 export default Map
-
-
-//  { nearPlaces.map( (place) => <PlaceBlock key={place.id} place={place}/> ) }

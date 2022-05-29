@@ -2,8 +2,7 @@
     display: flex;
     justify-content: center;
     margin-top: 3vw;
-    width: fit-content;
-    transform: translateX(100%);
+    width: 100%;
     outline-style: none;
 }
 
@@ -97,6 +96,7 @@
     text-align: center;
 }
 
+
 .logRegDiv {
     text-align: center;
     margin-bottom: 2vw;
@@ -107,6 +107,7 @@
     font-size: 1.25vw;
     margin-top: 4vw;
 }
+
 
 .logPage > hr {
     height: 0.05vw;
@@ -173,10 +174,11 @@
     font-size: 1vw;
 }
 
-.logRegDiv > input[type="button"] {
+.logRegDiv > a > button {
     border-color: #E9E9E9;
     border-width: 0.1vw;
     border-style: solid;
+    border-radius: 12px;
     padding: 0.55vw 1.2vw 0.55vw 1.2vw !important;
     margin: 1.3vw;
     width: fit-content;
@@ -184,6 +186,11 @@
     background-color: #f0f0f0;
     color: black;
     font-size: 1vw;
+}
+
+.logRegDiv > a > button:hover {
+    opacity: 75%;
+    cursor: pointer;
 }
 
 .logFormButtons > input[type="submit"]:hover {

@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import {gql} from 'graphql-request';
 import "./Login.css"
-import Modal from 'react-modal/lib/components/Modal';
-
-import crossImg from '../img/cross.svg'
+import {Link} from 'react-router-dom';
 
 function Login(props) {
 
@@ -13,30 +11,22 @@ function Login(props) {
   const [errorStyle, setErrorStyle] = useState("logFormError hidden");
   const [errorText, setErrorText] = useState("");
 
-  const [isOpen, changeOpen] = useState(true);
-
   let query = gql`
     mutation Signin {
       signin(email: "${email}", password: "${pass}") {
         token
         user {
           id
-          roles
         }
       }
     }
   `;
 
-  function closeModal() {
-    changeOpen(false);
-    props.setLogin(false);
-  }
+  async function signIn(e) {
 
-  async function handleSubmit(e) {
     e.preventDefault();
 
     try {
-
       const res = await fetch("https://myrna-server.herokuapp.com/", {
           headers: {'Content-Type': 'application/json'},
           method: 'POST',
@@ -50,13 +40,13 @@ function Login(props) {
       window.location.href = "http://localhost:3000/allPosts";
 
     } catch (err) {
-
-      console.error(err);
-      setErrorText("Wrong Email or Password!")
+      if (err.toString().search("reading 'user'") != -1) {
+        setErrorText("Wrong Email or Password!")
+      } else {
+        setErrorText("Something went wrong!")
+      }
       setErrorStyle("logFormError");
-
     } 
-    
   }
 
   function handleEmailChange(e) {
@@ -66,61 +56,54 @@ function Login(props) {
   function handlePassChange(e) {
     setPass(e.target.value);
   }
-    
+
   return (
 
-      <Modal className="modal"
+    <div className='modal'>
 
-        isOpen={isOpen}
-        ariaHideApp={false}
-        onRequestClose={closeModal}
+      <div className="logPage">
 
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description">
+          {/* <div className="logXDiv">
+            <div className="logX" onClick={closeModal} to="/"> <img src={crossImg}></img> </div>
+          </div> */}
 
-        <div className="logPage">
+          <div className="logFormDiv">
 
-            <div className="logXDiv">
-              <div className="logX" onClick={closeModal} to="/"> <img src={crossImg}></img> </div>
+            <div className="logFormTitle">
+              <p className="logFormTitleText"> Sign In </p>
             </div>
 
-            <div className="logFormDiv">
+            <div className={errorStyle}>
+              <p className="logFormErrorText">{errorText}</p>
+            </div>
 
-              <div className="logFormTitle">
-                <p className="logFormTitleText"> Sign in </p>
-              </div>
-
-              <div className={errorStyle}>
-                <p className="logFormErrorText">{errorText}</p>
-              </div>
-
-              <form className='logForm' method='POST' onSubmit={handleSubmit}>
-                <input type="email" name="email" onChange={handleEmailChange} value={email} placeholder='Email' required></input><br></br>
-                <input type="password"  name="pass" onChange={handlePassChange} value={pass} placeholder='Password' required></input><br></br>
-                <div className="logFormButtonsDiv">
-                  <div className='logFormButtons'>
-                    <input type="submit" value="Log In"></input>
-                    <p>I forgot my password</p>
-                  </div>
+            <form className='logForm' method='POST' onSubmit={signIn}>
+              <input type="email" name="email" onChange={handleEmailChange} value={email} placeholder='Email' required></input><br></br>
+              <input type="password"  name="pass" onChange={handlePassChange} value={pass} placeholder='Password' required></input><br></br>
+              <div className="logFormButtonsDiv">
+                <div className='logFormButtons'>
+                  <input type="submit" value="Log In"></input>
+                  <p>I forgot my password</p>
                 </div>
-              </form>
+              </div>
+            </form>
 
-            </div>
+          </div>
 
-            <hr></hr>
+          <hr></hr>
 
-            <div className="logRegDiv">
+          <div className="logRegDiv">
 
-              <p> Don't have an account yet? </p>
+            <p> Don't have an account yet? </p>
 
-              <input type="button" value="Register"></input>
+            <Link to="/registration"> <button> Register </button> </Link>
 
-            </div>
+          </div>
 
-        </div>
+      </div>
+      
+    </div>
 
-      </Modal>
-    
   );
 }
 

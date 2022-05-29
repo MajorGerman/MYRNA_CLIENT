@@ -17,19 +17,9 @@ function App() {
   const [userRoles, ] = useState(null)
   const [userToken, setUserToken] = useState()
 
-  const [login, setLogin] = useState(false);
-  const [reg, setReg] = useState(false);
-
   const [notify, setNotify] = useState(false);
   const [notifyText, setNotifyText] = useState("");
 
-  const returnLogin = (bool) => {
-    return (bool) ? <Login setLogin={setLogin} setUserToken={setUserToken}/> : '';
-  }
-
-  const returnRegistration = (bool) => {
-    return (bool) ? <Registration setReg={setReg} setUserToken={setUserToken}/>: '';
-  }
 
   const returnNotify = (bool) => {
     return (bool) ? <Notification notifyText={notifyText} setNotify={setNotify}/>: '';
@@ -40,12 +30,10 @@ function App() {
 
       <Router>  
 
-        <Navbar roles={userRoles} setLogin={setLogin} setReg={setReg} setNotify={setNotify} setNotifyText={setNotifyText}/> 
+        <Navbar roles={userRoles} setNotify={setNotify} setNotifyText={setNotifyText}/> 
         {returnNotify(notify)}  
-        {returnLogin(login)}
-        {returnRegistration(reg)}
         <Routes>
-          <Route path='/' exact />
+          <Route path='/' exact/>
           <Route path='/allPosts' element={<AllPosts/>} />
           <Route path='/subscriptionsPosts' component={AllPosts} />
           <Route path='/userPosts' component={AllPosts} />
@@ -54,6 +42,8 @@ function App() {
           <Route path='/allUpdates' element={<AllUpdates/>} />
           <Route path='/map' element={<Map/>} />
           <Route path='/profile' element={<Profile/>} />
+          <Route path='/login' element={<Login/>} />
+          <Route path='/registration' element={<Registration/>} />
         </Routes>
         
       </Router>

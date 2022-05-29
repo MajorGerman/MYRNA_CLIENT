@@ -39,12 +39,23 @@ function Profile (props) {
         }       
     }
 
+    function logout() {
+        localStorage.removeItem("user_id");
+        localStorage.removeItem("token");
+        window.location.href = "http://localhost:3000/login";
+    }
+
     useEffect(() =>{
         getData()
-            .then((a) =>{
-                a = a.data.getUserById;
-                setMe(a);
-                console.log(a);
+            .then((b) =>{
+                let a = b.data.getUserById;
+                console.log(a)
+                if (a.length === 0) {
+                    window.location.href = "http://localhost:3000/login";
+                } else {
+                    setMe(a);
+                    console.log(a);                    
+                }
             })
     }, [])
 
@@ -66,7 +77,7 @@ function Profile (props) {
                                 <p className="userInfo"> LOCATION: {me.location}</p>             
                             </div>               
                         </div>
-                        <input type="button" value="Logout"></input>
+                        <input type="button" onClick={logout} value="Logout"></input>
                         <input type="button" value="Edit"></input>
                     </div>
 

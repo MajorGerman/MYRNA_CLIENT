@@ -35,7 +35,7 @@ function Navbar (props) {
 
         try {
 
-            return await fetch("https://myrna-server.herokuapp.com/", {
+            return await fetch(process.env.REACT_APP_SERVER_IP, {
                 headers: {'Content-Type': 'application/json'},
                 method: 'POST',
                 body: JSON.stringify({"query": query})
@@ -52,11 +52,16 @@ function Navbar (props) {
 
     useEffect(() => {
         getData().then((a) =>{
-            a = a.data.getUserById.roles;
+            try {
+                a = a.data.getUserById.roles;
+            } catch(e) {
+                a = [];
+            }
             console.log(a);
             setUserRoles(a);
-        }).finally((b) => {
-            if (userRoles.some(userRole => userRole === "USER")) {
+            if (userRoles.indexOf('USER') == -1) {
+                setHidden("hidden");
+            } else {
                 setHidden("");
             }
         });
@@ -70,12 +75,19 @@ function Navbar (props) {
     }
 
     let loginOnClick = () =>{
-        if (localStorage.getItem("user_id") != null && localStorage.getItem("user_id") !== ""
-        && localStorage.getItem("token") != null && localStorage.getItem("token") !== "") {
-            window.location.href = "http://localhost:3000/profile";
-        } else {
-            props.setLogin(true)
-        }
+        getData().then((a) =>{
+            try {
+                a = a.data.getUserById.roles;
+            } catch(e) {
+                a = [];
+            }
+            setUserRoles(a);
+            if (userRoles.indexOf('USER') == -1) {
+                window.location.href = "http://localhost:3000/login";
+            } else {
+                window.location.href = "http://localhost:3000/profile"
+            }
+        });
     }
 
     return(
@@ -90,9 +102,9 @@ function Navbar (props) {
                 <div>
                     <img src={homeImg}></img> <Link className="navlink" to="/allPosts"> Home </Link>
                 </div>
-                <div>
+                {/* <div>
                     <img src={latestImg}></img> <Link className="navlink" to="/allUpdates"> Latest Updates </Link>
-                </div>
+                </div> */}
                 <div className={hidden}>
                     <img src={meetingsImg}></img> <Link className="navlink" to="/meetings"> Meetings </Link>
                 </div>
