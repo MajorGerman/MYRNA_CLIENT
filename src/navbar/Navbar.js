@@ -35,9 +35,11 @@ function Navbar (props) {
     async function getData() {
 
         try {
+            
+            if (localStorage.getItem("user_id") == null) return ;
 
             return await fetch(process.env.REACT_APP_SERVER_IP, {
-                headers: {'Content-Type': 'application/json'},
+                headers: {'Content-Type': 'application/json', 'verify-token': localStorage.getItem("token")},
                 method: 'POST',
                 body: JSON.stringify({"query": query})
             }).then((a) =>{
@@ -121,7 +123,7 @@ function Navbar (props) {
                 <div className={hidden}>
                     <Link className="navlink" to="/addPost"> <img src={addPostImg}></img> </Link>
                 </div>       
-                <div onClick={notifyOnClick}>
+                <div className={hidden} onClick={notifyOnClick}>
                     <img src={notifyImg}></img>
                 </div>
                 <div onClick={loginOnClick}>

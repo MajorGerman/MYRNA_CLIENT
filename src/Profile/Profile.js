@@ -25,8 +25,8 @@ function Profile (props) {
 
     async function getData() {
         try {
-            return await fetch("https://myrna-server.herokuapp.com/", {
-                headers: {'Content-Type': 'application/json'},
+            return await fetch(process.env.REACT_APP_SERVER_IP, {
+                headers: {'Content-Type': 'application/json', 'verify-token': localStorage.getItem("token")},
                 method: 'POST',
                 body: JSON.stringify({"query": query})
             }).then((a) =>{
@@ -47,7 +47,7 @@ function Profile (props) {
 
     useEffect(() =>{
         getData()
-            .then((b) =>{
+            .then((b) => {
                 let a = b.data.getUserById;
                 console.log(a)
                 if (a.length === 0) {

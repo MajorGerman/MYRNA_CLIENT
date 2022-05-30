@@ -31,20 +31,22 @@ function Registration (props) {
 
     try {
 
-      const res = await fetch("https://myrna-server.herokuapp.com/", {
+      const res = await fetch(process.env.REACT_APP_SERVER_IP, {
           headers: {'Content-Type': 'application/json'},
           method: 'POST',
           body: JSON.stringify({"query": query})
       })
 
-      console.log(await res)
-      console.log(await res.json());
+      const res_json = await res.json()
+
+      localStorage.setItem("user_id", res_json.data.signup.user.id);
+      localStorage.setItem("token", res_json.data.signup.token);
 
       window.location.href = "http://localhost:3000/profile";
 
     } catch (err) {
 
-      console.reg(err)
+      console.log(err)
 
     } 
     

@@ -27,7 +27,7 @@ function Login(props) {
     e.preventDefault();
 
     try {
-      const res = await fetch("https://myrna-server.herokuapp.com/", {
+      const res = await fetch(process.env.REACT_APP_SERVER_IP, {
           headers: {'Content-Type': 'application/json'},
           method: 'POST',
           body: JSON.stringify({"query": query})
