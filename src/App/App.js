@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from '../Navbar/Navbar';
@@ -11,11 +11,9 @@ import Map from '../Map/Map';
 import Notification from '../Notification/Notification';
 import AddPost from '../AddPost/AddPost';
 import Profile from '../Profile/Profile';
+import Meetings from '../Meetings/Meetings';
 
 function App() {
-
-  const [userRoles, ] = useState(null)
-  const [userToken, setUserToken] = useState()
 
   const [notify, setNotify] = useState(false);
   const [notifyText, setNotifyText] = useState("");
@@ -30,7 +28,7 @@ function App() {
 
       <Router>  
 
-        <Navbar roles={userRoles} setNotify={setNotify} setNotifyText={setNotifyText}/> 
+        <Navbar setNotify={setNotify} setNotifyText={setNotifyText}/> 
         {returnNotify(notify)}  
         <Routes>
           <Route path='/' exact/>
@@ -44,6 +42,7 @@ function App() {
           <Route path='/profile' element={<Profile/>} />
           <Route path='/login' element={<Login/>} />
           <Route path='/registration' element={<Registration/>} />
+          <Route path='/meetings' element={<Meetings/>} />
         </Routes>
         
       </Router>

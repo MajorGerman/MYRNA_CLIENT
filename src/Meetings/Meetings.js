@@ -33,24 +33,24 @@ function Meetings (props) {
         }       
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         getData()
-        .then((a) =>{
-            setMeetings(a.data.getMeetingsByUserId);
+        .then((a) => {
             a = a.data.getMeetingsByUserId;
-            console.log(a)
+            setMeetings(a);
+            console.log(a);
         })
         
     }, [])
 
     return(
 
-            <div className='homePage'>
+            <div className='meetingsPage'>
 
-                <p className='homePageText'>Home</p>
+                <p className='meetingsPageText'> Meetings </p>
 
-                <div className="homePagePostsDiv">
-                    <div className='homePagePosts'>
+                <div className="meetingsPageMeetingsDiv">
+                    <div className='meetingsPageMeetings'>
                         {meetings.map((meeting) => <MeetingBlock key={meeting.id} meeting={meeting}/>)}
                     </div>
                 </div>

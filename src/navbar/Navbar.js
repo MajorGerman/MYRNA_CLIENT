@@ -13,15 +13,10 @@ import addPostImg from '../img/addpost.svg'
 
 import NotificationBar from 'react-notification-bar';
 
-import Login from '../Login/Login';
-import Registation from '../Registration/Registration';
-
 import "./Navbar.css";
 
 function Navbar (props) {
 
-    let userRoles = [];
-    //const [userRoles, setUserRoles] = useState([]);
     const [hidden, setHidden] = useState("hidden");
 
     let query = gql`
@@ -55,20 +50,10 @@ function Navbar (props) {
 
     useEffect(() => {
         getData().then((a) =>{
-            try {
-                a = a.data.getUserById.roles;
-            } catch(e) {
-                a = [];
-            }
-            console.log(a);
-            //setUserRoles(a);
-            userRoles = a;
-            if (userRoles.indexOf('USER') == -1) {
+            if (a.data.getUserById.roles.indexOf('USER') == -1) {
                 setHidden("hidden");
-                console.log("DD")
             } else {
                 setHidden("");
-                console.log("GG")
             }
         });
     }, [])
@@ -82,13 +67,8 @@ function Navbar (props) {
 
     let loginOnClick = () =>{
         getData().then((a) =>{
-            try {
-                a = a.data.getUserById.roles;
-            } catch(e) {
-                a = [];
-            }
-            userRoles = a;
-            if (userRoles.indexOf('USER') == -1) {
+            console.log(a);
+            if (a.data.getUserById.roles.indexOf('USER') == -1) {
                 window.location.href = "http://localhost:3000/login";
             } else {
                 window.location.href = "http://localhost:3000/profile"

@@ -3,7 +3,16 @@ import Post from '../Post/Post';
 import "./AllPosts.css"
 import { gql } from 'graphql-request';
 
+import avatar1 from '../img/avatars/avatar1.jpg';
+import avatar2 from '../img/avatars/avatar2.jpg';
+import avatar3 from '../img/avatars/avatar3.jpg';
+import avatar4 from '../img/avatars/avatar4.jpg';
+import avatar5 from '../img/avatars/avatar5.jpg';
+import avatar6 from '../img/avatars/avatar6.jpg';
+
 function AllPosts (props) {
+
+    const [avatars, setAvatars] = useState([avatar1, avatar2, avatar3, avatar4, avatar5, avatar6]);
 
     const [posts, setPosts] = useState([]);
     
@@ -17,6 +26,7 @@ function AllPosts (props) {
                     id
                     first_name
                     last_name
+                    avatar
                 }
                 comments {
                     id
@@ -25,6 +35,7 @@ function AllPosts (props) {
                         id
                         first_name
                         last_name
+                        avatar
                     }
                 }
                 likes
@@ -58,7 +69,7 @@ function AllPosts (props) {
             .then((a) =>{
                 a = a.data.getAllPosts;
                 setPosts(a);
-                console.log(a)
+                console.log(a);
             })
     }, [])
 

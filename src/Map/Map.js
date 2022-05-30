@@ -17,7 +17,11 @@ function Map (props) {
   const [nearPlaces, setNearPlaces] = useState([]);
 
   let query = gql`
-    //validateToken
+    query GetUserById {
+      getUserById(id: ${localStorage.getItem("user_id")}) {
+        roles
+        }
+    }
   `;
 
   async function getData() {

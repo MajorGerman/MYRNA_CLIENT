@@ -4,13 +4,23 @@ import { gql } from 'graphql-request';
 
 import './Post.css';
 
-import Avatar1Img from '../img/avatar1.jpg';
+import {Link} from 'react-router-dom';
+
 import DotsImg from '../img/dots.svg'
 import PacmanImg from '../img/pacman.svg'
 
+import avatar1 from '../img/avatars/avatar1.jpg';
+import avatar2 from '../img/avatars/avatar2.jpg';
+import avatar3 from '../img/avatars/avatar3.jpg';
+import avatar4 from '../img/avatars/avatar4.jpg';
+import avatar5 from '../img/avatars/avatar5.jpg';
+import avatar6 from '../img/avatars/avatar6.jpg';
+
 function Post(props) {
 
-    const [comments,] = useState(props.post.comments)
+    const [avatars, setAvatars] = useState([avatar1, avatar2, avatar3, avatar4, avatar5, avatar6]);
+
+    const [comments, setComments] = useState(props.post.comments)
 
     const [content, setContent] = useState("");
 
@@ -19,12 +29,13 @@ function Post(props) {
 
     let query = gql`
         mutation AddNewComment {
-            addNewComment(user_id: ${localStorage.getItem("user_id")}, post_id: ${props.post.id}, content: ${document.getElementsByClassName('inputcont').value}) {
+            addNewComment(user_id: ${localStorage.getItem("user_id")}, post_id: ${props.post.id}, content: "${content}") {
             id
             author {
                 id
                 first_name
                 last_name
+                avatar
             }
             content
             }
@@ -42,13 +53,21 @@ function Post(props) {
 
         try {
 
-            return fetch("https://myrna-server.herokuapp.com/", {
+            setContent(content.trim());
+
+            if (content == null || content === "" || content.slice(0,1) === " ") return;
+
+            return fetch(process.env.REACT_APP_SERVER_IP, {
                 headers: {'Content-Type': 'application/json'},
                 method: 'POST',
                 body: JSON.stringify({"query": query})
             }).then((a) =>{
                 return a.json()
             }).then((b) => {
+                setComments([].concat(comments, b.data.addNewComment))
+                console.log(comments)
+                document.getElementById("commentInput").value = "";
+                setContent("");
                 return b
             })
 
@@ -62,7 +81,7 @@ function Post(props) {
 
         try {
 
-            return fetch("https://myrna-server.herokuapp.com/", {
+            return fetch(process.env.REACT_APP_SERVER_IP, {
                 headers: {'Content-Type': 'application/json'},
                 method: 'POST',
                 body: JSON.stringify({"query": query2})
@@ -89,9 +108,11 @@ function Post(props) {
     <div className="post" id={props.post.id}>
         <div className="postTop">
             <div className="postAuthor">
-                <img src={Avatar1Img}></img>
+                <Link to="/profile" state={{ userId: props.post.author.id }} >
+                <img src={avatars[props.post.author.avatar]}></img>
                 <p> {props.post.author.first_name} </p> 
                 <p> {props.post.author.last_name} </p>
+                </Link>
             </div>
             <div className="postDots">
                 <img src={DotsImg}></img>
@@ -114,7 +135,7 @@ function Post(props) {
             {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
         </div>
         <div className="postComment">
-            <input className='inputcont' placeholder='Express your opinion' type="text"></input>
+            <input id="commentInput" onChange={(e) => {setContent(e.target.value)}} className='inputcont' placeholder='Express your opinion' type="text"></input>
             <i onClick={addComment} className="fa fa-paper-plane" aria-hidden='true'></i>
         </div>
     </div>

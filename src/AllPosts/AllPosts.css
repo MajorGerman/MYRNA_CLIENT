@@ -16,4 +16,5 @@
 }
 .homePage > .homePagePostsDiv > .homePagePosts {
     width: fit-content;
+    max-width: 80%;
 }

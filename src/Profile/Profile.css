@@ -40,12 +40,16 @@
 
 .profilePage > .profileDiv > .profile > .profileInfo > .avatar {
     border-radius: 32px;
+    width: 40%;
+    border-color:#ECECEC;
+    border-width: 0.05vw;
+    border-style: solid;
 }
 
 
-.profilePage > .profileDiv > .profile > .profileInfo > .userInfo {
-    font-size: 22px;
-    margin: 6px;
+.profilePage > .profileDiv > .profile > .profileInfo > div > .userInfo {
+    font-size: 21px;
+    margin: 9px;
 }
 
 

@@ -15,10 +15,8 @@ function PlaceBlock(props) {
 
     function addToFavorites(e) {
         e.preventDefault();
-
         try {
-
-            return fetch("https://myrna-server.herokuapp.com/", {
+            return fetch(process.env.REACT_APP_SERVER_IP, {
                 headers: {'Content-Type': 'application/json'},
                 method: 'POST',
                 body: JSON.stringify({"query": query})
@@ -27,11 +25,9 @@ function PlaceBlock(props) {
             }).then((b) => {
                 return b
             })
-
         } catch (err) {
             console.log(err)
         } 
-
     }
 
   return (

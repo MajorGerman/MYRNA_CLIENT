@@ -2,7 +2,7 @@
 .post {
     background-color: white;
     width: 700px;
-    max-width: 90%;
+    max-width: 100%;
     height: fit-content;
     margin: 20px 0px;
     border-radius: 0.5vw;
@@ -19,24 +19,30 @@
     justify-content: space-between;
 }
 
-.post > .postTop > .postAuthor {
+.post > .postTop > .postAuthor > a {
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: black;
 }
 
 
-.post > .postTop > .postAuthor > img {
+.post > .postTop > .postAuthor > a > img {
     border-radius: 12px;
+    border-color:#ECECEC;
+    border-width: 0.01vw;
+    border-style: solid;
     width: 42px;
     margin: 16px 8px 16px 16px;
     cursor: pointer;
 }
 
-.post > .postTop > .postAuthor > p {
+.post > .postTop > .postAuthor > a >  p {
     font-size: 21px;
     margin: 2px 2.5px;
     cursor: pointer;
 }
+
 
 .post > .postTop > .postDots > img {
     cursor: pointer;

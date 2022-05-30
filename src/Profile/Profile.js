@@ -1,24 +1,45 @@
 import React, {useState, useEffect} from 'react';
+import { useLocation } from 'react-router-dom'
 
 import "./Profile.css"
 
 import { gql } from 'graphql-request';
 
-import Avatar1Img from '../img/avatar1.jpg';
+import Avatar1Img from '../img/avatars/avatar1.jpg';
+
+import avatar1 from '../img/avatars/avatar1.jpg';
+import avatar2 from '../img/avatars/avatar2.jpg';
+import avatar3 from '../img/avatars/avatar3.jpg';
+import avatar4 from '../img/avatars/avatar4.jpg';
+import avatar5 from '../img/avatars/avatar5.jpg';
+import avatar6 from '../img/avatars/avatar6.jpg';
 
 function Profile (props) {
 
-    const [me, setMe] = useState({});
-    
+    const [avatars, setAvatars] = useState([avatar1, avatar2, avatar3, avatar4, avatar5, avatar6]);
+
+    const [user, setUser] = useState({});
+    const [birthday, setBirthday] = useState(new Date());
+
+    const location = useLocation();
+
+    let a = new Date();
+    a.toISOString();
+
+    const [state, setState] = useState(location.state || {userId: localStorage.getItem("user_id")});
+
+    const [hiddenMe, setHiddenMe] = useState("hidden");
+    const [hiddenSub, setHiddenSub] = useState("hidden");
+
     let query = gql`
         query GetUserById {
-            getUserById(id: ${localStorage.getItem("user_id")}) {
+            getUserById(id: ${state.userId}) {
                 id
-                email
                 first_name
                 last_name
                 birthday
                 location
+                avatar
             }
         }
     `;
@@ -46,15 +67,16 @@ function Profile (props) {
     }
 
     useEffect(() =>{
+        window.history.replaceState({}, document.title);
         getData()
             .then((b) => {
                 let a = b.data.getUserById;
-                console.log(a)
                 if (a.length === 0) {
                     window.location.href = "http://localhost:3000/login";
                 } else {
-                    setMe(a);
-                    console.log(a);                    
+                    setUser(a);
+                    let b = new Date(parseInt(a.birthday));
+                    setBirthday(b);
                 }
             })
     }, [])
@@ -68,17 +90,17 @@ function Profile (props) {
                 <div className="profileDiv">
 
                     <div className="profile">
-                        <p className="name" title={me.id}> {me.first_name} {me.last_name} </p>
+                        <p className="name" title={user.id}> {user.first_name} {user.last_name} </p>
                         <div className="profileInfo">
-                            <img className="avatar" src={Avatar1Img}></img>
+                            <img className="avatar" src={avatars[user.avatar]}></img>
                             <div>
-                                <p className="userInfo"> EMAIL: {me.email}</p>
-                                <p className="userInfo"> BIRTHDAY: {me.birthday}</p>
-                                <p className="userInfo"> LOCATION: {me.location}</p>             
+                                <p className="userInfo"> BIRTHDAY: { birthday.toLocaleDateString() }</p>
+                                <p className="userInfo"> LOCATION: { user.location }</p>             
                             </div>               
                         </div>
-                        <input type="button" onClick={logout} value="Logout"></input>
-                        <input type="button" value="Edit"></input>
+                        <input className={hiddenMe} type="button" onClick={logout} value="Logout"></input>
+                        <input className={hiddenMe} type="button" value="Edit"></input>
+                        <input className={hiddenSub} type="button" value="Subsribe"></input>
                     </div>
 
                 </div>

@@ -1,0 +1,20 @@
+.meetingsPage {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.meetingsPageText {
+    font-size: 36px;
+}
+
+.meetingsPage > .meetingsPageMeetingsDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+.meetingsPage > .meetingsPageMeetingsDiv > .meetingsPageMeetings {
+    width: fit-content;
+    max-width: 80%;
+}

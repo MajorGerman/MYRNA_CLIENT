@@ -1,0 +1,48 @@
+.meetingBlock {
+    background-color: white;
+    width: 700px;
+    height: fit-content;
+    margin: 20px 0px;
+    border-radius: 12px;
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;
+}
+
+
+
+.meetingBlock > .meetingBlockTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.meetingBlock > .meetingBlockTop > .meetingBlockAuthor {
+    display: flex;
+    align-items: center;
+}
+
+
+.meetingBlock > .meetingBlockTop > .meetingBlockAuthor > img {
+    border-radius: 12px;
+    width: 42px;
+    margin: 16px 8px 16px 16px;
+    cursor: pointer;
+}
+
+.meetingBlock > .meetingBlockTop > .meetingBlockAuthor > p {
+    font-size: 21px;
+    margin: 2px 2.5px;
+    cursor: pointer;
+}
+
+.meetingBlock > .meetingBlockTop > .meetingBlockDots > img {
+    cursor: pointer;
+    margin: 18px 20px 18px 18px;
+    width: 32px;
+    transition: 0.2s;
+}
+
+.meetingBlock > .meetingBlockTop > .meetingBlockDots > img:hover {
+    opacity: 75%;
+}

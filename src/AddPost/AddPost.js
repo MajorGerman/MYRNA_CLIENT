@@ -23,7 +23,7 @@ function AddPost (props) {
 
         try {
 
-            return await fetch("https://myrna-server.herokuapp.com/", {
+            return await fetch(process.env.REACT_APP_SERVER_IP, {
                 headers: {'Content-Type': 'application/json'},
                 method: 'POST',
                 body: JSON.stringify({"query": query})
