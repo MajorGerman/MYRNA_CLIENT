@@ -16,11 +16,12 @@ import NotificationBar from 'react-notification-bar';
 import Login from '../Login/Login';
 import Registation from '../Registration/Registration';
 
-import "./Navbar.css"
+import "./Navbar.css";
 
 function Navbar (props) {
 
-    const [userRoles, setUserRoles] = useState([]);
+    let userRoles = [];
+    //const [userRoles, setUserRoles] = useState([]);
     const [hidden, setHidden] = useState("hidden");
 
     let query = gql`
@@ -58,11 +59,14 @@ function Navbar (props) {
                 a = [];
             }
             console.log(a);
-            setUserRoles(a);
+            //setUserRoles(a);
+            userRoles = a;
             if (userRoles.indexOf('USER') == -1) {
                 setHidden("hidden");
+                console.log("DD")
             } else {
                 setHidden("");
+                console.log("GG")
             }
         });
     }, [])
@@ -81,7 +85,7 @@ function Navbar (props) {
             } catch(e) {
                 a = [];
             }
-            setUserRoles(a);
+            userRoles = a;
             if (userRoles.indexOf('USER') == -1) {
                 window.location.href = "http://localhost:3000/login";
             } else {
