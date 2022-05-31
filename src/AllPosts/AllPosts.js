@@ -15,6 +15,15 @@ function AllPosts (props) {
     const [avatars, setAvatars] = useState([avatar1, avatar2, avatar3, avatar4, avatar5, avatar6]);
 
     const [posts, setPosts] = useState([]);
+    const [deleteId, setDeleteId] = useState(0);
+
+    useEffect(() => {
+        if (deleteId != -1) {
+            const newList = posts.filter((item) => item.id !== deleteId);
+            setPosts(newList);    
+            setDeleteId(-1);
+        }
+    },[deleteId])
     
     let query = gql`
         query GetAllPosts {
@@ -81,9 +90,11 @@ function AllPosts (props) {
 
                 <div className="homePagePostsDiv">
                     <div className='homePagePosts'>
-                        {posts.map((post) => <Post key={post.id} post={post}/>)}
+                        {posts.map((post) => <Post setDeleteId={setDeleteId} key={post.id} post={post}/>)}
                     </div>
                 </div>
+
+                <p className='homePageEndText'> We reached the end </p>
 
             </div>
 

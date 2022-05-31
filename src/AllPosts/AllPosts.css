@@ -18,3 +18,9 @@
     width: fit-content;
     max-width: 80%;
 }
+
+.homePageEndText {
+    font-size: 18px;
+    color: #bebebe;
+    margin: 24px;
+}

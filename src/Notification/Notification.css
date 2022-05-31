@@ -36,8 +36,15 @@
     border-color: #E9E9E9;
     border-width: 0.1vw;
     border-style: solid;
+    animation: fade-in 0.1s ease-in;
+}
+
+@keyframes fade-in {
+    from {opacity: 0%}
+    to {opacity: 100%}
 }
 
 .notification > p {
     font-size: 21px;
 }
+

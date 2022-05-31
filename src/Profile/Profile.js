@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 
 import "./Profile.css"
 
@@ -75,11 +75,26 @@ function Profile (props) {
                     window.location.href = "http://localhost:3000/login";
                 } else {
                     setUser(a);
+                    if (a.id == localStorage.getItem("user_id")) {
+                        setHiddenMe("");
+                        setHiddenSub("hidden");
+                    } else {
+                        setHiddenMe("hidden");
+                        setHiddenSub("me");                        
+                    }
                     let b = new Date(parseInt(a.birthday));
                     setBirthday(b);
                 }
             })
     }, [])
+
+    function subsribe() {
+
+    }
+
+    function editProfile() {
+
+    }
 
     return(
 
@@ -99,8 +114,8 @@ function Profile (props) {
                             </div>               
                         </div>
                         <input className={hiddenMe} type="button" onClick={logout} value="Logout"></input>
-                        <input className={hiddenMe} type="button" value="Edit"></input>
-                        <input className={hiddenSub} type="button" value="Subsribe"></input>
+                        <input className={hiddenMe} type="button" onClick={editProfile} value="Edit"></input>
+                        <input className={hiddenSub} type="button" onClick={subsribe} value="Subsribe"></input>
                     </div>
 
                 </div>

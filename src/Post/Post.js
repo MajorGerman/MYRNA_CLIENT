@@ -27,6 +27,11 @@ function Post(props) {
     const [like, setLike] = useState(props.post.likes);
     const [likeStyle, setLikeStyle] = useState("");
 
+    const [dotsMenuStyle, setDotsMenuStyle] = useState("hidden dotsMenu");
+
+    const [hiddenMe, setHiddenMe] = useState("hidden dotsMenuButton")
+    const [hiddenSub, setHiddenSub] = useState("hidden dotsMenuButton")
+
     let query = gql`
         mutation AddNewComment {
             addNewComment(user_id: ${localStorage.getItem("user_id")}, post_id: ${props.post.id}, content: "${content}") {
@@ -48,17 +53,19 @@ function Post(props) {
         }
     `; 
 
+    let query3 = gql`
+        mutation DeletePost {
+            deletePost(post_id: ${props.post.id})
+        }
+    `; 
+
     function addComment(e) {
         e.preventDefault();
-
         try {
-
             setContent(content.trim());
-
             if (content == null || content === "" || content.slice(0,1) === " ") return;
-
             return fetch(process.env.REACT_APP_SERVER_IP, {
-                headers: {'Content-Type': 'application/json'},
+                headers: {'Content-Type': 'application/json', 'verify-token': localStorage.getItem("token")},
                 method: 'POST',
                 body: JSON.stringify({"query": query})
             }).then((a) =>{
@@ -70,19 +77,15 @@ function Post(props) {
                 setContent("");
                 return b
             })
-
         } catch (err) {
             console.log(err)
         } 
-
     }
 
     function likePost() { 
-
         try {
-
             return fetch(process.env.REACT_APP_SERVER_IP, {
-                headers: {'Content-Type': 'application/json'},
+                headers: {'Content-Type': 'application/json', 'verify-token': localStorage.getItem("token")},
                 method: 'POST',
                 body: JSON.stringify({"query": query2})
             }).then((a) =>{
@@ -96,11 +99,43 @@ function Post(props) {
                     setLikeStyle("");                    
                 }
             })     
-
         } catch (err) {
             console.log(err)
-        } 
+        }
+    }
 
+    function postDots() {
+        if (dotsMenuStyle != "dotsMenu") {
+            if (props.post.author.id == localStorage.getItem("user_id")) {
+                setHiddenMe("dotsMenuButton");
+                setHiddenSub("hidden dotsMenuButton")
+            } else {
+                setHiddenMe("hidden dotsMenuButton");
+                setHiddenSub("dotsMenuButton")
+            }
+            setDotsMenuStyle("dotsMenu");
+        } else {
+            setDotsMenuStyle("hidden dotsMenu");
+        }
+    }
+
+    function deletePost() {
+        try {
+            return fetch(process.env.REACT_APP_SERVER_IP, {
+                headers: {'Content-Type': 'application/json', 'verify-token': localStorage.getItem("token")},
+                method: 'POST',
+                body: JSON.stringify({"query": query3})
+            }).then((a) =>{
+                return a.json()
+            }).then((b) => {
+                if (b.data.deletePost) {
+                    props.setDeleteId(props.post.id)
+                }
+                return b
+            })
+        } catch (err) {
+            console.log(err)
+        }         
     }
 
   return (
@@ -115,7 +150,12 @@ function Post(props) {
                 </Link>
             </div>
             <div className="postDots">
-                <img src={DotsImg}></img>
+                <img onClick={postDots} src={DotsImg}></img>
+                <div className={dotsMenuStyle}>
+                    <div className={hiddenSub}> Add to corner ⭐</div>
+                    <div className={hiddenSub}> Compain 😠 </div>
+                    <div onClick={deletePost} className={hiddenMe}> Delete 🗑️ </div>
+                </div>
             </div>
         </div>
         <div className="postHr">
