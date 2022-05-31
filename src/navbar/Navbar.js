@@ -67,12 +67,16 @@ function Navbar (props) {
 
     let loginOnClick = () =>{
         getData().then((a) =>{
-            console.log(a);
-            if (a.data.getUserById.roles.indexOf('USER') == -1) {
+            try {
+                if (a.data.getUserById.roles.indexOf('USER') == -1) {
+                    window.location.href = "http://localhost:3000/login";
+                } else {
+                    window.location.href = "http://localhost:3000/profile"
+                }                
+            } catch(e) {
                 window.location.href = "http://localhost:3000/login";
-            } else {
-                window.location.href = "http://localhost:3000/profile"
             }
+
         });
     }
 

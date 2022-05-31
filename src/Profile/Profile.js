@@ -28,7 +28,7 @@ function Profile (props) {
 
     const [state, setState] = useState(location.state || {userId: localStorage.getItem("user_id")});
 
-    const [hiddenMe, setHiddenMe] = useState("hidden");
+    const [hiddenMe, setHiddenMe] = useState("");
     const [hiddenSub, setHiddenSub] = useState("hidden");
 
     let query = gql`
