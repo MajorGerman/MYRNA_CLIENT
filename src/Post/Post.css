@@ -74,7 +74,13 @@
     border-width: 0.1vw;
     border-style: solid;   
     cursor: pointer; 
+    transition: 0.2s;
 }
+
+.post > .postTop > .postDots > .dotsMenu > .dotsMenuButton:hover {
+    background-color: rgb(245, 249, 252);
+}
+
 
 .post > .postHr {
     display: flex;

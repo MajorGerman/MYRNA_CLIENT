@@ -1,6 +1,6 @@
 .meetingBlock {
     background-color: white;
-    width: 700px;
+    width: 100%;
     height: fit-content;
     margin: 20px 0px;
     border-radius: 12px;
@@ -15,25 +15,29 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 12px;
 }
 
-.meetingBlock > .meetingBlockTop > .meetingBlockAuthor {
+.meetingBlock > .meetingBlockTop > .meetingBlockName {
     display: flex;
     align-items: center;
 }
 
 
-.meetingBlock > .meetingBlockTop > .meetingBlockAuthor > img {
-    border-radius: 12px;
-    width: 42px;
-    margin: 16px 8px 16px 16px;
-    cursor: pointer;
-}
-
-.meetingBlock > .meetingBlockTop > .meetingBlockAuthor > p {
+.meetingBlock > .meetingBlockTop > .meetingBlockName > p {
     font-size: 21px;
     margin: 2px 2.5px;
     cursor: pointer;
+}
+
+.meetingBlock > .meetingBlockTop > .meetingBlockDots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meetingBlock > .meetingBlockTop > .meetingBlockDots > .date {
+    margin: 0px 16px;
 }
 
 .meetingBlock > .meetingBlockTop > .meetingBlockDots > img {
@@ -45,4 +49,31 @@
 
 .meetingBlock > .meetingBlockTop > .meetingBlockDots > img:hover {
     opacity: 75%;
+}
+
+.meetingBlock > .meetingBlockTop > .meetingBlockDots > .dotsMenu {
+    position: absolute;
+    transform: translateX(60px) translateY(60px);
+}
+
+@keyframes fade-in {
+    from {opacity: 0%; margin-top: 0px;}
+    to {opacity: 100%; margin-top: 2px;}
+}
+
+.meetingBlock > .meetingBlockTop > .meetingBlockDots > .dotsMenu > .dotsMenuButton {
+    background-color: white;
+    animation: fade-in 0.1s ease-in;
+    padding: 8px;
+    margin: 2px;
+    border-radius: 0.5vw;
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;   
+    cursor: pointer; 
+    transition: 0.2s;
+}
+
+.meetingBlock > .meetingBlockTop > .meetingBlockDots > .dotsMenu > .dotsMenuButton:hover {
+    background-color: rgb(245, 249, 252);
 }

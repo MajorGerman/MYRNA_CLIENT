@@ -12,9 +12,64 @@
     width: 100%;
     display: flex;
     justify-content: center;
-
+    
 }
 .meetingsPage > .meetingsPageMeetingsDiv > .meetingsPageMeetings {
-    width: fit-content;
+    width: 700px;
     max-width: 80%;
+}
+
+
+.meetingsPage > .meetingsPageMeetingsDiv > .meetingsPageMeetings > .noMeetingsDiv {
+    background-color: white;
+    width: 700px;
+    margin: 20px 0px;
+    border-radius: 12px;
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;
+}
+
+.meetingsPage > .meetingsPageMeetingsDiv > .meetingsPageMeetings > .noMeetingsDiv > p {
+    font-size: 26px;
+    margin-top: 36px;
+    padding: 32px;
+}
+
+.meetingsPage > .meetingsPageMeetingsDiv > .meetingsPageMeetings  > .noMeetingsDiv > a > button {
+    width: 180px;
+    font-size: 24px;
+    margin-bottom: 68px;
+    padding: 8px;
+    transition: 0.2s;
+    background-color: #067BE2;
+    border-radius: 8px;
+    border-width: 0px;
+    color: white;
+    cursor: pointer;
+}
+
+.meetingsPage > .meetingsPageMeetingsDiv > .meetingsPageMeetings  > .noMeetingsDiv > a > button:hover {
+    opacity: 75%;
+}
+
+.meetingsPage > .yesMeetingsDiv {
+}
+
+.meetingsPage > .yesMeetingsDiv > a > button {
+    width: 180px;
+    font-size: 18px;
+    margin: 12px;
+    padding: 12px;
+    transition: 0.2s;
+    background-color: #067BE2;
+    border-radius: 8px;
+    border-width: 0px;
+    color: white;
+    cursor: pointer;
+    transform: translateX(240px);
+}
+
+.meetingsPage > .yesMeetingsDiv > a > button:hover {
+    opacity: 75%;
 }

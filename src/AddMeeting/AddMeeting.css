@@ -1,0 +1,133 @@
+.addMeetingPage {
+    width: 100%;
+    margin: 40px 0px 40px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addMeetingPage > .addMeeting {
+    width: 760px;
+    max-width: 78%;
+    background-color:white;
+    border-radius: 12px;
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;
+    text-align: center;
+}
+
+
+.addMeetingPage > .addMeeting > .addMeetingText {
+    font-size: 36px;
+    margin: 20px 0px;
+    display: inline-block;
+}
+
+.addMeetingPage > .addMeeting > form > .addMeetingForm > .addMeetingFormText {
+    width: 100%;
+}
+
+.addMeetingPage > .addMeeting > form > .addMeetingForm > .addMeetingFormSubmit {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+
+.addMeetingFormError {
+    margin: 0.2vw 0vw 1.2vw 0vw;
+}
+
+.addMeetingFormError > .addMeetingFormErrorText {
+    font-size: 24px;
+    color: red;
+    font-weight: 600;
+    font-style: italic;
+    animation: fade-in 0.1s ease-in;
+}
+
+@keyframes fade-in {
+    from {opacity: 0%}
+    to {opacity: 100%}
+}
+
+
+.addMeetingFormSubmit > input {
+    border-radius: 12px;
+    width: fit-content;
+    border-width: 0px;
+    padding: 10px 15px;
+    margin: 28px;
+    transition: 0.2s;
+    background-color: #067BE2;
+    color: white;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.addMeetingFormSubmit > input:hover {
+    opacity: 75%;
+}
+
+.addMeetingFormText > textarea {
+    max-width: 80%;
+    min-width: 60%;
+    resize: none;
+    overflow:hidden;
+    font-style: italic;
+    border-radius: 12px;
+    font-size: 24px;
+    margin: 10px 5px;
+    padding: 15px;
+    border-style: solid;
+    border-color: #E9E9E9;
+    border-width:  0.1vw;
+    background-color: #f0f0f0;
+}
+
+.addMeetingFormText > textarea[name="header"] {
+    height: 32px;
+    width: 70%;
+}
+
+.addMeetingFormTypeAndDate {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.addMeetingFormType {
+    width: 42%;
+    margin: 6px;
+}
+
+.addMeetingFormDate {
+    width: 25%;
+    margin: 6px 42px 6px 6px;
+}
+
+
+.addMeetingFormType > select {
+    font-style: italic;
+    border-radius: 12px;
+    font-size: 24px;
+    padding: 15px;
+    width: 100%;
+    border-style: solid;
+    border-color: #E9E9E9;
+    border-width:  0.1vw;
+    background-color: #f0f0f0;
+}
+
+.addMeetingFormDate > input {
+    font-style: italic;
+    border-radius: 12px;
+    font-size: 24px;
+    padding: 15px;
+    width: 100%;
+    border-style: solid;
+    border-color: #E9E9E9;
+    border-width:  0.1vw;
+    background-color: #f0f0f0;
+}

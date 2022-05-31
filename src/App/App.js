@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from '../Navbar/Navbar';
@@ -12,6 +12,7 @@ import Notification from '../Notification/Notification';
 import AddPost from '../AddPost/AddPost';
 import Profile from '../Profile/Profile';
 import Meetings from '../Meetings/Meetings';
+import AddMeeting from '../AddMeeting/AddMeeting';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
           <Route path='/login' element={<Login/>} />
           <Route path='/registration' element={<Registration/>} />
           <Route path='/meetings' element={<Meetings/>} />
+          <Route path='/addMeeting' element={<AddMeeting/>} />
         </Routes>
         
       </Router>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Comment from '../Comment/Comment'
 import { gql } from 'graphql-request';
 
@@ -59,6 +59,12 @@ function Post(props) {
         }
     `; 
 
+    let query4 = gql`
+        query Query {
+            isPostLikedByUser(post_id: ${props.post.id}, user_id: ${localStorage.getItem("user_id")})
+        }
+    `; 
+
     function addComment(e) {
         e.preventDefault();
         try {
@@ -92,16 +98,42 @@ function Post(props) {
                 return a.json()
             }).then((b) => {
                 if (b.data.likePost) {
-                    setLike(like + 1)
                     setLikeStyle("blue");
+                    setLike(like + 1);
                 } else {
-                    setLike(like - 1);
-                    setLikeStyle("");                    
+                    setLikeStyle("");   
+                    setLike(like - 1);           
                 }
             })     
         } catch (err) {
             console.log(err)
         }
+    }
+
+    useEffect(() =>{
+        setLikeStyleOnSetup().then((a) => {
+            if (a.data.isPostLikedByUser) {
+                setLikeStyle("blue");
+            } else {
+                setLikeStyle("");                    
+            }
+        })
+    }, [])
+
+    function setLikeStyleOnSetup() {
+        try {
+            return fetch(process.env.REACT_APP_SERVER_IP, {
+                headers: {'Content-Type': 'application/json', 'verify-token': localStorage.getItem("token")},
+                method: 'POST',
+                body: JSON.stringify({"query": query4})
+            }).then((a) =>{
+                return a.json()
+            }).then((b) => {
+                return b
+            })     
+        } catch (err) {
+            console.log(err)
+        }       
     }
 
     function postDots() {
