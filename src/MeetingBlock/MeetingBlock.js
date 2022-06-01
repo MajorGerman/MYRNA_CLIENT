@@ -14,6 +14,9 @@ function MeetingBlock(props) {
     const [date, setDate] = useState(new Date());
 
     let query = gql`
+        mutation DeleteMeeting {
+            deleteMeeting(meeting_id: ${props.meeting.id}, user_id: ${localStorage.getItem("user_id")})
+        }
     `;  
 
 function meetingBlockDots() {
@@ -38,6 +41,7 @@ function deleteMeeting() {
         }).then((a) =>{
             return a.json()
         }).then((b) => {
+            console.log(b.data)
             if (b.data.deleteMeeting) {
                 props.setDeleteId(props.meeting.id)
             }

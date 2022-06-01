@@ -57,8 +57,8 @@
 }
 
 @keyframes fade-in {
-    from {opacity: 0%; margin-top: 0px;}
-    to {opacity: 100%; margin-top: 2px;}
+    from {opacity: 0%}
+    to {opacity: 100%}
 }
 
 .meetingBlock > .meetingBlockTop > .meetingBlockDots > .dotsMenu > .dotsMenuButton {

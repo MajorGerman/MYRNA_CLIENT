@@ -55,8 +55,8 @@ function Map (props) {
       })
     });
 
-    nearPlaces.push({"id": 1, "name": "lol"})
-    nearPlaces.push({"id": 2, "name": "kek"})
+    setNearPlaces(nearPlaces.concat(nearPlaces, [{"id": 1, "name": "lol"}, {"id": 2, "name": "kek"}]))
+    
 
     // window.location.href = "http://localhost:3000/allPosts";
     // getData().then((a) =>{

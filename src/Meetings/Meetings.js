@@ -89,7 +89,7 @@ function Meetings (props) {
                             <p> There are no any meetings yet </p>
                             <Link to="/addMeeting"> <button> Create one </button> </Link>
                         </div>
-                        {meetings.map((meeting) => <MeetingBlock key={meeting.id} meeting={meeting}/>)}
+                        {meetings.map((meeting) => <MeetingBlock setDeleteId={setDeleteId} key={meeting.id} meeting={meeting}/>)}
                     </div>
                 </div>
 
