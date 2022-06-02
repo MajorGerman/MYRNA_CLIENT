@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { gql } from 'graphql-request';
+import {Link} from 'react-router-dom';
 
 import './MeetingBlock.css';
 
@@ -56,6 +57,10 @@ function makeImportant() {
 
 }
 
+function goToMeeting() {
+    
+}
+
 useEffect(() =>{
     let b = new Date(parseInt(props.meeting.date));
     setDate(b);
@@ -66,9 +71,11 @@ useEffect(() =>{
 
     <div className="meetingBlock" id={props.meeting.id}>
         <div className="meetingBlockTop">
-            <div className="meetingBlockName">
-                <p> {props.meeting.name} </p> 
-            </div>
+            <Link to="/meeting" state={{ meetingId: props.meeting.id }} >
+                <div onClick={goToMeeting()} className="meetingBlockName">
+                    <p> {props.meeting.name} </p> 
+                </div>
+            </Link>
             <div className="meetingBlockDots">
                 <p className='date'> { date.toLocaleDateString() } </p>
                 <div style={{borderRight: "solid 0.1vw #E9E9E9", height: '30px'}}></div>

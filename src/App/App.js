@@ -13,6 +13,7 @@ import AddPost from '../AddPost/AddPost';
 import Profile from '../Profile/Profile';
 import Meetings from '../Meetings/Meetings';
 import AddMeeting from '../AddMeeting/AddMeeting';
+import Meeting from '../Meeting/Meeting';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
           <Route path='/registration' element={<Registration/>} />
           <Route path='/meetings' element={<Meetings/>} />
           <Route path='/addMeeting' element={<AddMeeting/>} />
+          <Route path='/meeting' element={<Meeting/>} />
         </Routes>
         
       </Router>

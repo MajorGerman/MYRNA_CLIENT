@@ -67,7 +67,7 @@ function Profile (props) {
     }
 
     useEffect(() =>{
-        window.history.replaceState({}, document.title);
+        //window.history.replaceState({}, document.title);
         getData()
             .then((b) => {
                 let a = b.data.getUserById;
@@ -87,6 +87,7 @@ function Profile (props) {
                 }
             })
     }, [])
+
 
     function subsribe() {
 

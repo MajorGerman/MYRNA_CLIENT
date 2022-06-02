@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import "./Comment.css"
+import "./Member.css"
 
 import avatar1 from '../img/avatars/avatar1.jpg';
 import avatar2 from '../img/avatars/avatar2.jpg';
@@ -10,21 +10,18 @@ import avatar6 from '../img/avatars/avatar6.jpg';
 
 import {Link} from 'react-router-dom';
 
-function Comment (props) {
+function Member (props) {
 
     const [avatars, setAvatars] = useState([avatar1, avatar2, avatar3, avatar4, avatar5, avatar6]);
 
     return(
-        <div className='comment' id={props.comment.id}>
-            <div className="commentAuthor">
-                <img src={avatars[props.comment.author.avatar]}></img>
-                <Link to="/profile" state={{ userId: props.comment.author.id }} > <p> {props.comment.author.first_name} </p> <p> {props.comment.author.last_name} </p> </Link>
-            </div>
-            <div className="commentContent">
-                <p> — {props.comment.content} </p>
+        <div className='member' id={props.member.id}>
+            <div className="memberTop">
+                <img src={avatars[props.member.avatar]}></img>
+                <Link to="/profile" state={{ userId: props.member.id }} > <p> {props.member.first_name} </p> <p> {props.member.last_name} 👑 </p> </Link>
             </div>
         </div>
     )
 }
 
-export default Comment;
+export default Member;

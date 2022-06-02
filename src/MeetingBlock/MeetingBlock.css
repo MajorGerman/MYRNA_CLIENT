@@ -18,13 +18,18 @@
     padding: 12px;
 }
 
-.meetingBlock > .meetingBlockTop > .meetingBlockName {
+.meetingBlock > .meetingBlockTop > a {
+    text-decoration: none;
+    color: black;
+}
+
+.meetingBlock > .meetingBlockTop > a > .meetingBlockName {
     display: flex;
     align-items: center;
 }
 
 
-.meetingBlock > .meetingBlockTop > .meetingBlockName > p {
+.meetingBlock > .meetingBlockTop > a > .meetingBlockName > p {
     font-size: 21px;
     margin: 2px 2.5px;
     cursor: pointer;

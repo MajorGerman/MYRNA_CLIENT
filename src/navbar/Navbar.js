@@ -66,6 +66,7 @@ function Navbar (props) {
     }
 
     let loginOnClick = () =>{
+        window.history.replaceState({}, document.title);
         getData().then((a) =>{
             try {
                 if (a.data.getUserById.roles.indexOf('USER') == -1) {
