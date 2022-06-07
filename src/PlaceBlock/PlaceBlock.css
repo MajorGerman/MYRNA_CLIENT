@@ -1,15 +1,14 @@
 .placeBlock {
     background-color: white;
-    width: 700px;
+    width: 100%;
     height: fit-content;
     margin: 20px 0px;
+    padding: 4px;
     border-radius: 12px;
     border-color: #E9E9E9;
     border-width: 0.1vw;
     border-style: solid;
 }
-
-
 
 .placeBlock > .placeBlockTop {
     display: flex;
@@ -17,24 +16,44 @@
     justify-content: space-between;
 }
 
-.placeBlock > .placeBlockTop > .placeBlockAuthor {
+.placeBlock > .placeBlockTop > .placeBlockInfo {
     display: flex;
     align-items: center;
 }
 
 
-.placeBlock > .placeBlockTop > .placeBlockAuthor > img {
+.placeBlock > .placeBlockTop > .placeBlockInfo > .placeBlockAvatar > img {
     border-radius: 12px;
-    width: 42px;
-    margin: 16px 8px 16px 16px;
+    width: 46px;
+    height: 46px;
+    margin: 16px 8px 12px 16px;
     cursor: pointer;
 }
 
-.placeBlock > .placeBlockTop > .placeBlockAuthor > p {
+.placeBlock > .placeBlockTop > .placeBlockInfo > .placeBlockName {
+    display: flex;
+    align-items: center;
+}
+
+.placeBlock > .placeBlockTop > .placeBlockInfo > .placeBlockName > p {
     font-size: 21px;
-    margin: 2px 2.5px;
+    margin: 2px 6px;
+    transition: 0.2s;
     cursor: pointer;
 }
+
+.placeBlock > .placeBlockTop > .placeBlockInfo > .placeBlockName > p:hover {
+    opacity: 75%;
+}
+
+
+
+.placeBlock > .placeBlockTop > .placeBlockDots  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .placeBlock > .placeBlockTop > .placeBlockDots > img {
     cursor: pointer;
@@ -45,4 +64,33 @@
 
 .placeBlock > .placeBlockTop > .placeBlockDots > img:hover {
     opacity: 75%;
+}
+
+
+
+.placeBlock > .placeBlockTop > .placeBlockDots > .dotsMenu {
+    position: absolute;
+    transform: translateX(60px) translateY(60px);
+}
+
+@keyframes fade-in {
+    from {opacity: 0%}
+    to {opacity: 100%}
+}
+
+.placeBlock > .placeBlockTop > .placeBlockDots > .dotsMenu > .dotsMenuButton {
+    background-color: white;
+    animation: fade-in 0.1s ease-in;
+    padding: 8px;
+    margin: 2px;
+    border-radius: 0.5vw;
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;   
+    cursor: pointer; 
+    transition: 0.2s;
+}
+
+.placeBlock > .placeBlockTop > .placeBlockDots > .dotsMenu > .dotsMenuButton:hover {
+    background-color: rgb(245, 249, 252);
 }

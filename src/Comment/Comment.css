@@ -6,19 +6,19 @@
     padding: 0px 0px 0px 16px;
 }
 
-.comment > .commentAuthor {
+.comment > .commentTop {
     display: flex;
     align-items: center;
 }
 
-.comment > .commentAuthor > a {
+.comment > .commentTop > a {
     display: flex;
     align-items: center;
     text-decoration: none;
     color: black;
 }
 
-.comment > .commentAuthor > img {
+.comment > .commentTop > img {
     border-radius: 8px;
     width: 26px;
     margin: 16px 8px 16px 16px;
@@ -29,7 +29,7 @@
     cursor: pointer;
 }
 
-.comment > .commentAuthor > a > p {
+.comment > .commentTop > a > p {
     font-size: 18px;
     margin: 2px 2.5px;
     cursor: pointer;
@@ -40,9 +40,57 @@
     display: flex;
     align-items: center;
     text-align: left !important;
+    margin-bottom: 16px;
 }
 
 .comment > .commentContent > p {
-    font-size: 16px;
-    margin: 0px 0px 12px 24px;
+    font-size: 15px;
+    margin: 1px 24px;
+}
+
+
+.comment > .commentTop > .commentDots {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+
+
+.comment > .commentTop > .commentDots > img {
+    cursor: pointer;
+    margin: 18px 20px 18px 18px;
+    width: 21px;
+    transition: 0.2s;
+}
+
+.comment > .commentTop > .commentDots > img:hover {
+    opacity: 75%;
+}
+
+.comment > .commentTop > .commentDots > .dotsMenu {
+    position: absolute;
+    margin: 32px -18px;
+}
+
+@keyframes fade-in {
+    from {opacity: 0%;}
+    to {opacity: 100%;} 
+}
+
+.comment > .commentTop > .commentDots > .dotsMenu > .dotsMenuButton {
+    background-color: white;
+    animation: fade-in 0.1s ease-in;
+    padding: 6px;
+    margin: 2px 0px;
+    border-radius: 0.5vw;
+    border-color: #E9E9E9;
+    border-width: 0.1vw;
+    border-style: solid;   
+    cursor: pointer; 
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+.comment > .commentTop > .commentDots > .dotsMenu > .dotsMenuButton:hover {
+    background-color: rgb(245, 249, 252);
 }

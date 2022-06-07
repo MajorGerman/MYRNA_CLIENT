@@ -29,8 +29,19 @@ function Post(props) {
 
     const [dotsMenuStyle, setDotsMenuStyle] = useState("hidden dotsMenu");
 
-    const [hiddenMe, setHiddenMe] = useState("hidden dotsMenuButton")
-    const [hiddenSub, setHiddenSub] = useState("hidden dotsMenuButton")
+    const [hiddenMe, setHiddenMe] = useState("hidden dotsMenuButton");
+    const [hiddenSub, setHiddenSub] = useState("hidden dotsMenuButton");
+
+    const [deleteId, setDeleteId] = useState(0);
+
+    useEffect(() => {
+        if (deleteId != -1) {
+            const newList = comments.filter((item) => item.id !== deleteId);
+            setComments(newList);    
+            setDeleteId(-1);
+        }
+    },[deleteId]);
+
 
     let query = gql`
         mutation AddNewComment {
@@ -204,7 +215,7 @@ function Post(props) {
             <p> {like} </p>
         </div>
         <div className="postComments">
-            {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
+            {comments.map((comment) => <Comment setDeleteId={setDeleteId} key={comment.id} comment={comment}/>)}
         </div>
         <div className="postComment">
             <input id="commentInput" onChange={(e) => {setContent(e.target.value)}} className='inputcont' placeholder='Express your opinion' type="text"></input>

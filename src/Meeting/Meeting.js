@@ -77,11 +77,27 @@ function Meeting (props) {
                     date
                     type
                     status
+                    place {
+                        id
+                        name
+                        paradigm
+                        location {
+                            city
+                            country
+                        }
+                        rating
+                    }
                     members {
                         id
                         first_name
                         last_name
                         avatar
+                    }
+                    creator {
+                        id
+                    }
+                    chief {
+                        id
                     }
                 }
             }
@@ -189,7 +205,7 @@ function Meeting (props) {
                                 </div>
 
                                 <div className='meetingMembers'>
-                                    {members.map((member) => <Member setDeleteId={setDeleteId} key={member.id} member={member}/>)}
+                                    {members.map((member) => <Member setDeleteId={setDeleteId} chief={meeting.chief} key={member.id} member={member}/>)}
                                 </div>                
                         </div>
                     </div>

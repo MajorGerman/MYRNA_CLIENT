@@ -55,7 +55,7 @@ function Map (props) {
       })
     });
 
-    setNearPlaces(nearPlaces.concat(nearPlaces, [{"id": 1, "name": "lol"}, {"id": 2, "name": "kek"}]))
+    setNearPlaces(nearPlaces.concat(nearPlaces, [{"id": 1, "name": "Pizza Kiosk Narva"}, {"id": 2, "name": "Hesburger Pähklimäe"}]))
     
 
     // window.location.href = "http://localhost:3000/allPosts";

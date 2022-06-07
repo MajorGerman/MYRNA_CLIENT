@@ -42,7 +42,7 @@ function Registration (props) {
       localStorage.setItem("user_id", res_json.data.signup.user.id);
       localStorage.setItem("token", res_json.data.signup.token);
 
-      window.location.href = "http://localhost:3000/profile";
+      //window.location.href = "http://localhost:3000/profile";
 
     } catch (err) {
 
