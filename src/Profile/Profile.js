@@ -19,14 +19,19 @@ function Profile (props) {
     const [avatars, setAvatars] = useState([avatar1, avatar2, avatar3, avatar4, avatar5, avatar6]);
 
     const [user, setUser] = useState({});
-    const [birthday, setBirthday] = useState(new Date());
 
-    const location = useLocation();
+    const [birthday, setBirthday] = useState(new Date());
+    const [location, setLocation] = useState({});
+
+    const [birthdayStyle, setBirthdayStyle] = useState("userInfo hidden");
+    const [locationStyle, setLocationStyle] = useState("userInfo hidden");
+
+    const loc = useLocation();
 
     let a = new Date();
     a.toISOString();
 
-    const [state, setState] = useState(location.state || {userId: localStorage.getItem("user_id")});
+    const [state, setState] = useState(loc.state || {userId: localStorage.getItem("user_id")});
 
     const [hiddenMe, setHiddenMe] = useState("");
     const [hiddenSub, setHiddenSub] = useState("hidden");
@@ -38,7 +43,12 @@ function Profile (props) {
                 first_name
                 last_name
                 birthday
-                location
+                location {
+                    id
+                    city
+                    country
+                    postal_code
+                }
                 avatar
             }
         }
@@ -82,19 +92,28 @@ function Profile (props) {
                         setHiddenMe("hidden");
                         setHiddenSub("me");                        
                     }
-                    let b = new Date(parseInt(a.birthday));
-                    setBirthday(b);
+                    if (a.birthday == null) {
+                        setBirthdayStyle("userInfo hidden");  
+                    } else {
+                        let b = new Date(parseInt(a.birthday));
+                        setBirthday(b);            
+                        setBirthdayStyle("userInfo");            
+                    }
+                    if (a.location == null) {
+                        setLocationStyle("userInfo hidden");  
+                    } else {      
+                        setLocation(a.location);
+                        setLocationStyle("userInfo");            
+                    }
                 }
             })
     }, [])
 
 
     function subsribe() {
-
     }
 
     function editProfile() {
-
     }
 
     return(
@@ -110,8 +129,8 @@ function Profile (props) {
                         <div className="profileInfo">
                             <img className="avatar" src={avatars[user.avatar]}></img>
                             <div>
-                                <p className="userInfo"> BIRTHDAY: { birthday.toLocaleDateString() }</p>
-                                <p className="userInfo"> LOCATION: { user.location }</p>             
+                                <p className={birthdayStyle}> Birthday: { birthday.toLocaleDateString() }</p>
+                                <p className={locationStyle}> Location: { location.country }, {location.city} </p>             
                             </div>               
                         </div>
                         <input className={hiddenMe} type="button" onClick={logout} value="Logout"></input>

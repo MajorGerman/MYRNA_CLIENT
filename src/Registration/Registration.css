@@ -33,6 +33,45 @@
     margin-bottom: 2vw;
 }
 
+
+.regForm > .birthdayCheck {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px;
+}
+
+
+.regForm > .birthdayCheck > .birthdayCheckbox { 
+    margin: 12px;
+}
+
+.regForm > .birthdayCheck > p { 
+    font-size: 1vw;
+}
+
+
+
+.regForm > .locationCheck {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px;
+}
+
+
+.regForm > .locationCheck > .locationCheckbox { 
+    margin: 12px;
+}
+
+.regForm > .locationCheck > p { 
+    font-size: 1vw;
+}
+
+
+
+
+
 .regFormButtonsDiv {
     width: 100%;
     display: flex;
@@ -153,6 +192,18 @@
 }
 
 .regForm > input[type="email"] {
+    width: 15vw;
+    font-size: 1vw;
+    margin: 0.5vw;
+    padding: 0.6vw;
+    border-style: solid;
+    border-color: #E9E9E9;
+    border-width:  0.1vw;
+    background-color: #f0f0f0;
+}
+
+
+.regForm > input[type="date"] {
     width: 15vw;
     font-size: 1vw;
     margin: 0.5vw;

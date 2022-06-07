@@ -34,19 +34,26 @@ function Login(props) {
       })
 
       let a = await res.json();
-      console.log(a.data.signin.user.id);
-      localStorage.setItem("user_id", a.data.signin.user.id);
-      localStorage.setItem("token", a.data.signin.token);
-      window.location.href = "http://localhost:3000/allPosts";
+
+      try {
+
+        localStorage.setItem("user_id", a.data.signin.user.id);
+        localStorage.setItem("token", a.data.signin.token);
+        window.location.href = "http://localhost:3000/profile";
+        
+      } catch (e) {
+
+        setErrorText(a.errors[0].message)
+        setErrorStyle("logFormError");
+
+      }
 
     } catch (err) {
-      if (err.toString().search("reading 'user'") != -1) {
-        setErrorText("Wrong Email or Password!")
-      } else {
-        setErrorText("Something went wrong!")
-      }
-      setErrorStyle("logFormError");
-    } 
+
+        setErrorText(err)
+        setErrorStyle("logFormError");
+
+    }
   }
 
   function handleEmailChange(e) {

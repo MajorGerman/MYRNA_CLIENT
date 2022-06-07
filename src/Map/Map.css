@@ -16,13 +16,19 @@
 }
 
 .map {
-    border-radius: 16px !important;
-    width: 700px !important;
+    width: 600px;
     max-width: 80% !important;
-    height: 500px !important;
+    height: 450px;
     border-color: #E9E9E9 !important;
     border-width: 1px !important;
     border-style: solid !important;
+    transition: 0.75s;
+}
+
+.map-bigger {
+    width: 920px !important;
+    height: 640px !important;
+    border-color: #dad9d9 !important;
 }
 
 .mapPage > .nearPlacesText {
