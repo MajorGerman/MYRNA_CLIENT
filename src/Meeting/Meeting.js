@@ -77,27 +77,27 @@ function Meeting (props) {
                     date
                     type
                     status
-                    place {
+                    creator {
                         id
-                        name
-                        paradigm
-                        location {
-                            city
-                            country
-                        }
-                        rating
                     }
+                    # chief {
+                    #     id
+                    # }
                     members {
-                        id
+                        id 
                         first_name
                         last_name
                         avatar
                     }
-                    creator {
+                    places {
                         id
-                    }
-                    chief {
-                        id
+                        name
+                        paradigm
+                        location {
+                            id
+                            city
+                            country
+                        }
                     }
                 }
             }
@@ -105,8 +105,6 @@ function Meeting (props) {
     `;
 
     let query2 = gql`
-    
-    
     `;
 
     async function getData() {
@@ -184,13 +182,13 @@ function Meeting (props) {
                                     <hr></hr>    
                                 </div>
 
-                                <p className="meetingPlaceText"> Place </p>
+                                {/* ,<p className="meetingPlaceText"> {meeting.places[0].name} </p> */}
                                 <div className='meetingPlace'>
                                     <img className='meetingPlaceImg' src={placeImg}></img>
                                     <div className='meetingPlaceDesc'>
-                                        <i> <p className='meetingPlaceTextHeader'> Pizzakiosk Iidla </p> </i>
-                                        <i> <p className='meetingPlaceTextContent'> Location: Kohtla-Järve </p> </i>   
-                                        <i> <p className='meetingPlaceTextContent'> Paradigm: Pizza </p> </i>        
+                                       {/* 
+                                        <i> <p className='meetingPlaceTextContent'> Location: {meeting.places[0].location.city} </p> </i>   
+                                        <i> <p className='meetingPlaceTextContent'> Paradigm: {meeting.places[0].paradigm} </p> </i>         */}
                                         <i> <p className='meetingPlaceTextContent'> Rating: 4.2 / 5 </p> </i>
                                     </div>
                                 </div>

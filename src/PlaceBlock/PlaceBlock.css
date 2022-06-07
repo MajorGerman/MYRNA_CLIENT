@@ -21,8 +21,16 @@
     align-items: center;
 }
 
+.placeBlock > .placeBlockTop > .placeBlockInfo > a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
 
-.placeBlock > .placeBlockTop > .placeBlockInfo > .placeBlockAvatar > img {
+
+
+.placeBlock > .placeBlockTop > .placeBlockInfo > a > .placeBlockAvatar > img {
     border-radius: 12px;
     width: 46px;
     height: 46px;
@@ -30,19 +38,19 @@
     cursor: pointer;
 }
 
-.placeBlock > .placeBlockTop > .placeBlockInfo > .placeBlockName {
+.placeBlock > .placeBlockTop > .placeBlockInfo > a >.placeBlockName {
     display: flex;
     align-items: center;
 }
 
-.placeBlock > .placeBlockTop > .placeBlockInfo > .placeBlockName > p {
+.placeBlock > .placeBlockTop > .placeBlockInfo > a > .placeBlockName > p {
     font-size: 21px;
     margin: 2px 6px;
     transition: 0.2s;
     cursor: pointer;
 }
 
-.placeBlock > .placeBlockTop > .placeBlockInfo > .placeBlockName > p:hover {
+.placeBlock > .placeBlockTop > .placeBlockInfo > a > .placeBlockName > p:hover {
     opacity: 75%;
 }
 

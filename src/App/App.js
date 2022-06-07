@@ -14,6 +14,7 @@ import Profile from '../Profile/Profile';
 import Meetings from '../Meetings/Meetings';
 import AddMeeting from '../AddMeeting/AddMeeting';
 import Meeting from '../Meeting/Meeting';
+import Place from '../Place/Place';
 
 function App() {
 
@@ -35,9 +36,6 @@ function App() {
         <Routes>
           <Route path='/' exact/>
           <Route path='/allPosts' element={<AllPosts/>} />
-          <Route path='/subscriptionsPosts' component={AllPosts} />
-          <Route path='/userPosts' component={AllPosts} />
-          <Route path='/subscriptions' component={AllPosts} />
           <Route path='/addPost' element={<AddPost/>} />
           <Route path='/allUpdates' element={<AllUpdates/>} />
           <Route path='/map' element={<Map/>} />
@@ -47,6 +45,7 @@ function App() {
           <Route path='/meetings' element={<Meetings/>} />
           <Route path='/addMeeting' element={<AddMeeting/>} />
           <Route path='/meeting' element={<Meeting/>} />
+          <Route path='/place' element={<Place/>} />
         </Routes>
         
       </Router>

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { gql } from 'graphql-request';
+import {Link} from 'react-router-dom';
 
 import './PlaceBlock.css';
 
@@ -8,6 +9,7 @@ import DotsImg from '../img/dots.svg'
 import placeImg from '../img/pizzakiosk.jpg';
 
 function PlaceBlock(props) {
+    
 
     const [star, setStar] = useState(0);
     const [starStyle, setStarStyle] = useState("");
@@ -49,12 +51,14 @@ function PlaceBlock(props) {
     <div className="placeBlock" id={props.place.id}>
         <div className="placeBlockTop">
             <div className="placeBlockInfo">
-                <div className="placeBlockAvatar">
-                    <img src={placeImg}></img>
-                </div>
-                <div className="placeBlockName">
-                    <p> {props.place.name} </p> 
-                </div>  
+                <Link to="/place" state={{ placeId: props.place.id }} >
+                    <div className="placeBlockAvatar">
+                        <img src={placeImg}></img>
+                    </div>
+                    <div className="placeBlockName">
+                        <p> {props.place.name} </p> 
+                    </div>  
+                </Link>
             </div>
             <div className="placeBlockDots">
                 <div style={{borderRight: "solid 0.1vw #E9E9E9", height: '30px'}}></div>

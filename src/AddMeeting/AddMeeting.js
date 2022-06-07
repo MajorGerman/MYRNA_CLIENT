@@ -13,7 +13,7 @@ function AddMeeting (props) {
 
     let query = gql`
         mutation CreateNewMeeting {
-            createNewMeeting( name: "${header}", creator: ${localStorage.getItem("user_id")}, date: "${date}", type: ${type} ) {
+            createNewMeeting( name: "${header}", date: "${date}", type: ${type}, creator: ${localStorage.getItem("user_id")}) {
                 id
             }
         }
@@ -40,7 +40,7 @@ function AddMeeting (props) {
             }).then((a) =>{
                 return a.json()
             }).then((b) => {
-                window.location.href = "http://localhost:3000/meetings";
+                //window.location.href = "http://localhost:3000/meetings";
                 return b
             })
 

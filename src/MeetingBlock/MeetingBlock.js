@@ -54,11 +54,9 @@ function deleteMeeting() {
 }
 
 function makeImportant() {
-
 }
 
-function goToMeeting() {
-    
+function goToMeeting() { 
 }
 
 useEffect(() =>{

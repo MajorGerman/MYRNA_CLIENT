@@ -3,40 +3,47 @@ import { gql } from 'graphql-request';
 
 import PlaceBlock from '../PlaceBlock/PlaceBlock';
 
-import * as ol from 'ol';
-import * as proj from 'ol/proj';
-import * as source from 'ol/source';
-import * as layer from 'ol/layer';
+import Mapp from '../Mapp/Mapp';
 
 import './Map.css';
-
-import env from 'react-dotenv';
+import { set } from 'ol/transform';
 
 function Map (props) {
 
+  const [places, setPlaces] = useState([]);
   const [nearPlaces, setNearPlaces] = useState([]);
+
+  const [userLocation, setUserLocation] = useState({});
 
   const [mapStyle, setMapStyle] = useState("map");
 
-  let map = new ol.Map({
-      target: 'map',
-      layers: [
-        new layer.Tile({
-          source: new source.OSM()
-        })
-      ],
-      view: new ol.View({
-        center: proj.fromLonLat([25, 58.75]),
-        zoom: 7
-      })
-    });
-
+  const [iconLatitude, setIconLatitude] = useState(0);
+  const [iconLongitude, setIconLongitude] = useState(0);
+  
   let query = gql`
+    query GetAllPlaces {
+      getAllPlaces {
+        id
+        name
+        location {
+          id
+          latitude
+          longitude
+        }
+      }
+    }
+  `;
+
+  let query2 = gql`
     query GetUserById {
       getUserById(id: ${localStorage.getItem("user_id")}) {
-        roles
-        }
-    }
+          location {
+            id
+            latitude
+            longitude
+          }
+      }
+    } 
   `;
 
   async function getData() {
@@ -50,54 +57,58 @@ function Map (props) {
           }).then((b) => {
               return b
           })
-
       } catch (err) {
           console.log(err)
       }       
   }
 
+  async function getData2() {
+    try {
+        return await fetch(process.env.REACT_APP_SERVER_IP, {
+            headers: {'Content-Type': 'application/json', 'verify-token': localStorage.getItem("token")},
+            method: 'POST',
+            body: JSON.stringify({"query": query2})
+        }).then((a) =>{
+            return a.json()
+        }).then((b) => {
+            return b
+        })
+    } catch (err) {
+        console.log(err)
+    }       
+}
+
   useEffect(() => {
+    
+    getData().then((a) => {
+      console.log(a.data.getAllPlaces);
+      setPlaces([].concat(places, a.data.getAllPlaces));
+    })    
 
-    setNearPlaces(nearPlaces.concat(nearPlaces, [{"id": 1, "name": "Pizza Kiosk Narva"}, {"id": 2, "name": "Hesburger Pähklimäe"}]))
+    getData2().then((a) => {
+      setUserLocation(a.data.getUserById.location);
 
-    // window.location.href = "http://localhost:3000/allPosts";
-    // getData().then((a) =>{
-    //   a = a.data.validateToken;
-    //   console.log(a);
-    //   if (!a) {
-    //     window.location.href = "http://localhost:3000/allPosts";
-    //     props.setLogin(true);
-    //   }
-    // });
+      setIconLatitude(a.data.getUserById.location.latitude); 
+      setIconLongitude(a.data.getUserById.location.longitude);
+    })
+
   }, [])
 
-  function mapResize() {
-    document.getElementById('map').addEventListener('transitionend', () => {
-      setInterval(map.updateSize, 1000) 
-    });
-    if (mapStyle == "map") {
-      setMapStyle("map map-bigger");
-      document.getElementById('map').innerHTML = "";
-    } else {
-      setMapStyle("map");
-      document.getElementById('map').innerHTML = "";
-    }
-  }
 
   return(
       <div className='mapPage'>
-          <p onClick={mapResize} className='mapPageText'>Map</p>
+          <p className='mapPageText'>Map</p>
           <div className='mapDiv'>
-              <div id='map' className={mapStyle}></div>
+              <Mapp iconLatitude={iconLatitude} iconLongitude={iconLongitude}></Mapp>
           </div>
-          <p className='nearPlacesText'> Places near you </p>
+          <p className="nearPlacesText"> Places near you </p>
           <div className='nearPlacesSearch'>
               <input type="text" placeholder='Pitsameistrid...'></input>
               <input type="button" value=" Search "></input>
           </div>
           <div className='nearPlacesDiv'>
             <div className="nearPlaces">
-              { nearPlaces.map( (place) => <PlaceBlock key={place.id} place={place}/> ) }
+              { places.map( (place) => <PlaceBlock key={place.id} place={place}/> ) }
             </div>
           </div>
       </div>
