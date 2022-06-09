@@ -4,13 +4,15 @@ import {Link} from 'react-router-dom';
 
 import './MeetingBlock.css';
 
-import DotsImg from '../img/dots.svg'
+import DotsImg from '../img/dots.svg';
 
 function MeetingBlock(props) {
 
-    const [dotsMenuStyle, setDotsMenuStyle] = useState("hidden dotsMenu")
-    const [hiddenMe, setHiddenMe] = useState("hidden dotsMenuButton")
-    const [hiddenSub, setHiddenSub] = useState("hidden dotsMenuButton")
+    const [dotsMenuStyle, setDotsMenuStyle] = useState("hidden dotsMenu");
+    const [hiddenMe, setHiddenMe] = useState("hidden dotsMenuButton");
+    const [hiddenSub, setHiddenSub] = useState("hidden dotsMenuButton");
+
+    const [makeImportantText, SetMakeImportantText] = useState("");
 
     const [date, setDate] = useState(new Date());
 
@@ -20,16 +22,19 @@ function MeetingBlock(props) {
         }
     `;  
 
+    let query2 = gql`
+        mutation MakeImportant {
+            makeImportant(meeting_id: ${props.meeting.id}, user_id: ${localStorage.getItem("user_id")})
+        }
+    `;  
+
 function meetingBlockDots() {
     if (dotsMenuStyle != "dotsMenu") {
-        if (props.meeting.members[0].id == localStorage.getItem("user_id")) {
-            setHiddenMe("dotsMenuButton");
-        } else {
-            setHiddenMe("hidden dotsMenuButton");
-        }
+        setHiddenMe("dotsMenuButton")
         setDotsMenuStyle("dotsMenu");
     } else {
         setDotsMenuStyle("hidden dotsMenu");
+        setHiddenMe("hidden dotsMenuButton")
     }
 }
 
@@ -44,8 +49,8 @@ function deleteMeeting() {
         }).then((b) => {
             console.log(b.data)
             if (b.data.deleteMeeting) {
-                props.setDeleteId(props.meeting.id)
-            }
+                props.setImportantId(props.meeting.id)
+            } 
             return b
         })
     } catch (err) {
@@ -54,14 +59,39 @@ function deleteMeeting() {
 }
 
 function makeImportant() {
-}
-
-function goToMeeting() { 
+    try {
+        return fetch(process.env.REACT_APP_SERVER_IP, {
+            headers: {'Content-Type': 'application/json', 'verify-token': localStorage.getItem("token")},
+            method: 'POST',
+            body: JSON.stringify({"query": query2})
+        }).then((a) =>{
+            return a.json()
+        }).then((b) => {
+            console.log(b.data)
+            if (!b.data.makeImportant) {
+                SetMakeImportantText("Make Trivial ❕");
+            } else {
+                SetMakeImportantText("Make Important ❗");
+            }
+            return b
+        })
+    } catch (err) {
+        console.log(err)
+    }         
 }
 
 useEffect(() =>{
+
+    console.log(props.meeting.important);
+    if (props.meeting.important) {
+        SetMakeImportantText("Make Trivial ❕");
+    } else {
+        SetMakeImportantText("Make Important ❗");
+    }
+
     let b = new Date(parseInt(props.meeting.date));
     setDate(b);
+
 }, []);
 
 
@@ -70,7 +100,7 @@ useEffect(() =>{
     <div className="meetingBlock" id={props.meeting.id}>
         <div className="meetingBlockTop">
             <Link to="/meeting" state={{ meetingId: props.meeting.id }} >
-                <div onClick={goToMeeting()} className="meetingBlockName">
+                <div className="meetingBlockName">
                     <p> {props.meeting.name} </p> 
                 </div>
             </Link>
@@ -79,9 +109,7 @@ useEffect(() =>{
                 <div style={{borderRight: "solid 0.1vw #E9E9E9", height: '30px'}}></div>
                 <img onClick={meetingBlockDots} src={DotsImg}></img>
                 <div className={dotsMenuStyle}>
-                    <div className={hiddenSub}> Add to corner ⭐</div>
-                    <div className={hiddenSub}> Compain 😠 </div>
-                    <div onClick={makeImportant} className={hiddenMe}> Make important ❗ </div>
+                    <div onClick={makeImportant} className={hiddenMe}> {makeImportantText} </div>
                     <div onClick={deleteMeeting} className={hiddenMe}> Delete 🗑️ </div>
                 </div>
             </div>

@@ -85,9 +85,9 @@ function Meeting (props) {
                     creator {
                         id
                     }
-                     chief {
+                    chief {
                          id
-                     }
+                    }
                     members {
                         id 
                         first_name

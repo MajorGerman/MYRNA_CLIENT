@@ -71,7 +71,9 @@ function SearchUsers (props) {
     return(
         <div className='users'>
             <input onChange={(e) => setSearchString(e.target.value)} value={searchString} type="text" placeholder='Type to search'></input>
-            {users.map((user) => <User onChoose2={onChoose2} onChoose={props.onChoose} key={user.id} user={user}/>)}
+            <div style={{height: '300px', overflowX: 'hidden', overflowY: 'auto', scrollbarGutter: "stable"}}>
+                {users.map((user) => <User onChoose2={onChoose2} onChoose={props.onChoose} key={user.id} user={user}/>)}
+            </div>
         </div>
     )
 }
