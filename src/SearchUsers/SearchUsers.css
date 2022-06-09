@@ -1,0 +1,11 @@
+.users > input[type="text"] {
+    width: 260px;
+    font-size: 18px;
+    margin: 12px 0px;
+    padding: 8px;
+    border-radius: 6px;
+    border-style: solid;
+    border-color: #E9E9E9;
+    border-width:  0.1vw;
+    background-color: #f0f0f0;
+}

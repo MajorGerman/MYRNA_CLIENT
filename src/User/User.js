@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import "./Member.css"
+import "./User.css"
 
 import avatar1 from '../img/avatars/avatar1.jpg';
 import avatar2 from '../img/avatars/avatar2.jpg';
@@ -10,26 +10,25 @@ import avatar6 from '../img/avatars/avatar6.jpg';
 
 import {Link} from 'react-router-dom';
 
-function Member (props) {
+function User (props) {
 
     const [avatars, setAvatars] = useState([avatar1, avatar2, avatar3, avatar4, avatar5, avatar6]);
 
-    const [crownStyle, setCrownStyle] = useState("hidden");
-
     useEffect(() => {
-        if (props.chief.id == props.member.id) {
-            setCrownStyle("");
-        }
     }, [])
 
     return(
-        <div className='member' id={props.member.id}>
-            <div className="memberTop">
-                <img src={avatars[props.member.avatar]}></img>
-                <Link to="/profile" state={{ userId: props.member.id }} > <p> {props.member.first_name} </p> <p> {props.member.last_name} </p> <p className={crownStyle}> 👑 </p> </Link>
+        <div className='user' id={props.user.id} onClick={() => {props.onChoose(props.user.id); props.onChoose2()}}>
+            <div className="userTop">
+                <img src={avatars[props.user.avatar]}></img>
+                <div className='userInfo'>
+                    <p> {props.user.first_name} {props.user.last_name} </p> 
+                    <p className='userEmail'> {props.user.email} </p>
+                </div>
+
             </div>
         </div>
     )
 }
 
-export default Member;
+export default User;
