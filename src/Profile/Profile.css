@@ -1,6 +1,6 @@
 .profilePage {
     width: 100%;
-    margin-top: 20px;
+    margin: 20px 0px;
     text-align: center;
 }
 
@@ -29,7 +29,7 @@
     font-size: 32px;
     font-weight: 600;
     font-style: italic;
-    margin: 12px;
+    margin: 16px;
 }
 
 
@@ -54,13 +54,14 @@
 
 
 .profilePage > .profileDiv > .profile > input[type="button"] {
+    min-width: 120px;
     width: fit-content;
     border-color: #E9E9E9;
     border-style: none;
     border-radius: 8px;
     font-size: 18px;
     padding: 8px 16px !important;
-    margin: 12px;
+    margin: 24px 8px;
     background-color: #067BE2;
     color: white;
     transition: 0.2s;
@@ -69,4 +70,78 @@
 .profilePage > .profileDiv > .profile > input[type="button"]:hover {
     opacity: 75%;
     cursor: pointer;
+}
+
+
+
+
+.profilePage > .profileTumblerDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profilePage > .profileTumblerDiv > .profileTumbler {
+    width: fit-content;
+    max-width: 80%;
+    display: flex;
+    justify-content: center;
+    border-radius: 18px;
+    border-color:#ECECEC;
+    border-width: 0.05vw;
+    border-style: solid;
+    background-color: white;
+    padding: 4px 32px;
+}
+
+.profilePage > .profileTumblerDiv > .profileTumbler > div {
+    margin: 24px 36px;
+}
+
+.profilePage > .profileTumblerDiv > .profileTumbler > .profileTumblerPosts {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.profilePage > .profileTumblerDiv > .profileTumbler > .profileTumblerPosts:hover {
+    opacity: 75%;
+}
+
+.profilePage > .profileTumblerDiv > .profileTumbler > .profileTumblerCorner {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.profilePage > .profileTumblerDiv > .profileTumbler > .profileTumblerCorner:hover {
+    opacity: 75%;
+}
+
+.profilePage > .profileTumblerDiv > .profileTumbler > div > p {
+    font-size: 21px;
+}
+
+
+
+
+
+.profilePage > .profileUserPostsDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profilePage > .profileUserPostsDiv > .profileUserPosts {
+    width: fit-content;
+    max-width: 80%;
+}
+
+.profilePage > .profileUserCornerDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profilePage > .profileUserCornerDiv > .profileUserCorner {
+    width: fit-content;
+    max-width: 80%;
 }
