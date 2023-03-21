@@ -1,0 +1,52 @@
+.meetingMessage {
+    width: 90%;
+    background-color: #f9f8f8;
+    border-color: #f3f3f3;
+    border-width: 0.1vw;
+    border-style: solid;
+    border-radius: 12px;
+    padding: 0px 0px 0px 6px;
+    text-align: left;
+    margin: 0px 12px 12px 12px;
+}
+
+.meetingMessage > .meetingMessageTop {
+    display: flex;
+    align-items: center;
+}
+
+.meetingMessage > .meetingMessageTop > a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.meetingMessage > .meetingMessageTop > img {
+    border-radius: 8px;
+    width: 26px;
+    margin: 16px 8px 16px 16px;
+    border-radius: 0.5vw;
+    border-color:#ECECEC;
+    border-width: 0.05vw;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.meetingMessage > .meetingMessageTop > a > p {
+    font-size: 18px;
+    margin: 2px 2.5px;
+    cursor: pointer;
+}
+
+.meetingMessage > .meetingMessageContent {
+    display: flex;
+    align-items: center;
+    text-align: left !important;
+    margin-bottom: 16px;
+}
+
+.meetingMessage > .meetingMessageContent > p {
+    font-size: 15px;
+    margin: 1px 24px;
+}

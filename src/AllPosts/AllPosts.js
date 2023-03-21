@@ -77,8 +77,10 @@ function AllPosts (props) {
         getData()
             .then((a) =>{
                 a = a.data.getAllPosts;
-                setPosts(a);
-                console.log(a);
+                if (a) {
+                    setPosts(a);
+                    console.log(a);                   
+                }
             })
     }, [])
 

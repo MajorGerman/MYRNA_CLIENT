@@ -4,6 +4,7 @@ import { useLocation, Link } from 'react-router-dom';
 import "./Meeting.css";
 
 import Member from '../Member/Member';
+import MeetingMessage from '../MeetingMessage/MeetingMessage';
 import SearchUsers from '../SearchUsers/SearchUsers';
 
 import { gql } from 'graphql-request';
@@ -19,6 +20,7 @@ function Meeting (props) {
     
     const [meeting, setMeeting] = useState({});
     const [members, setMembers] = useState([]);
+    const [messages, setMessages] = useState([]);
 
     const location = useLocation();
 
@@ -43,23 +45,33 @@ function Meeting (props) {
 
 
     useEffect(() =>{
+        console.log(document.querySelector(".meetingChat"));
+        document.querySelector(".meetingChat").scrollTo(0, 1000);
         console.log(meeting);
         if (meeting.members != null) {
             setMembers(setMembersFast());           
+        }
+        if (meeting.messages != null) {
+            setMessages(setMessagesFast());
         }
         let b = new Date(parseInt(meeting.date));
         setDate(b);
     }, [meeting])
 
-    useEffect(() =>{
-        if (members.length != 0) {
-            console.log(members)
-        }
-    }, [members])
+    // useEffect(() =>{
+    //     if (members.length != 0) {
+    //         console.log(members)
+    //     }
+    // }, [members])
 
     function setMembersFast() {
-        console.log(members.concat(meeting.members))
+        console.log(members.concat(meeting.members));
         return members.concat(meeting.members);
+    }
+
+    function setMessagesFast() {
+        console.log(messages.concat(meeting.messages));
+        return messages.concat(meeting.messages);
     }
     
     function setMeetingFast(a) {
@@ -105,6 +117,10 @@ function Meeting (props) {
                             postal_code
                         }
                         rating
+                    }
+                    messages {
+                        content
+                        id
                     }
                 }
             }
@@ -281,7 +297,8 @@ function Meeting (props) {
                     </div>
 
                     <div className='meetingChat'>
-                            <p> There is no chat yet </p>    
+                        {messages.map((message) => <MeetingMessage key={message.id} message={message}/>)}
+                        <input placeholder='Wassup?'></input>
                     </div>      
 
                 </div>
